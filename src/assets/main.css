@@ -1,0 +1,5 @@
+body {
+  background: linear-gradient(to right, #ffff 60%, #48A3BF 40%);
+  margin: 0; 
+  overflow-x: hidden;
+}
