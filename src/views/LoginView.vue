@@ -1,47 +1,3 @@
-<script>
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.css';
-import InputText from 'primevue/inputtext';
-import FloatLabel from 'primevue/floatlabel';
-
-export default {
-  components: { InputText, FloatLabel },
-  data: function () {
-    return {
-        dados:{
-            email: null,
-            senha: null
-        }
-    }
-  },
-  computed: {
-  },
-  methods: {
-    login(){
-        if(this.dados.email == null){
-            Swal.fire({
-                position: "top-center",
-                icon: "warning",
-                title: "Insira seu email!",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }else if(this.dados.senha == null){
-            Swal.fire({
-                position: "top-center",
-                icon: "warning",
-                title: "Insira sua senha!",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
-    }
-  },
-  mounted: function () {}
-}
-
-</script>
-
 <template>
     <div class="d-flex h-100">
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-0 login-left">
@@ -57,25 +13,25 @@ export default {
                 </div>
             
                 <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-                    <div class="d-flex flex-column justify-content-between align-items-center">
+                    <form @submit.prevent="login" class="d-flex flex-column justify-content-between align-items-center">
                         <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2%;">
                             <FloatLabel>
-                                <InputText id="email" v-model="this.dados.email" :style="{ width: '100%' }" />
+                                <InputText id="email" v-model="user.username" :style="{ width: '100%' }" />
                                 <label for="email">Email</label>
                             </FloatLabel>
                         </div>
                 
-                        <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 3%;">
+                        <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2rem;">
                             <FloatLabel>
-                                <InputText id="senha" v-model="this.dados.senha" :style="{ width: '100%' }" />
+                                <Password id="senha" v-model="user.password" toggleMask :feedback="false" :style="{ width: '100%' }" />
                                 <label for="senha">Senha</label>
                             </FloatLabel>
                         </div>
-                    </div>
+                    </form>
             
                     <div class="d-flex justify-content-center text-center pt-2" style="margin-top: 2%; gap: 2%;">
                         <button type="button" @click="login" class="btn custom-button-primary">Entrar</button>
-                        <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastroUser'">Cadastrar</button>
+                        <!-- <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button> -->
                     </div>
                 
                     <div class="text-center mt-2">
@@ -88,8 +44,48 @@ export default {
 
 </template>
 
-<style>
+<script>
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+import InputText from 'primevue/inputtext';
+import FloatLabel from 'primevue/floatlabel';
+import Password from 'primevue/password';
 
+import http from '@/services/http.js';
+import { useAuthStore } from '../stores/auth.js';
+
+export default {
+  components: { InputText, FloatLabel, Password },
+  data: function () {
+    return {
+        user: {
+            username: '',
+            password: ''
+        },
+        auth: useAuthStore()
+    }
+  },
+  computed: {
+  },
+  methods: {
+    async login(){
+        try {
+            console.log(this.user);
+            const { data } = await http.post('/authenticate', this.user);
+            this.auth.setToken(data.id_token);
+            const user = await http.get('/account', { headers: { Authorization: `Bearer ${this.auth.token}` } });
+            this.auth.setUser(user.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+  },
+  mounted: function () {}
+}
+
+</script>
+
+<style>
 main {
     height: 100vh;
 }
