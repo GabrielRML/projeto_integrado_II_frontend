@@ -1,69 +1,3 @@
-<script>
-import { RouterLink, RouterView } from 'vue-router'
-import InputText from 'primevue/inputtext';
-import FloatLabel from 'primevue/floatlabel';
-import InputMask from 'primevue/inputmask';
-import Calendar from 'primevue/calendar';
-import Dropdown from 'primevue/dropdown';
-import Password from 'primevue/password';
-import SelectButton from 'primevue/selectbutton';
-import Checkbox from 'primevue/checkbox';
-import InputNumber from 'primevue/inputnumber';
-
-export default {
-  components: {
-    RouterLink, RouterView, InputText, FloatLabel, InputMask, Calendar, Dropdown, Password, SelectButton, Checkbox, InputNumber
-  },
-  data: function () {
-    return {
-        varValida: 0,
-        form: {
-            NOMECOMPLETO: null,
-            EMAIL: null,
-            CPF: null,
-            CELULAR: null,
-            DATA_NASCIMENTO: null,
-            GENERO: null,
-            SENHA: null,
-            CONFIRMAR_SENHA: null,
-            CRP: null,
-            TIPO_USUARIO: 0
-        },
-        generos: [
-            { genero: 'Masculino' },
-            { genero: 'Feminino' },
-            { genero: 'Outro' }
-        ],
-        TIPOS_USUARIO: [
-            { label: 'Usuário', value: 0 },
-            { label: 'Psicologo', value: 1 },
-            { label: 'Universitario', value: 2 }
-        ],
-        termos: false
-    }
-  },
-  computed: {
-  },
-  methods: {
-    buttonPsicologo(){
-        this.varValida = 1
-    },
-
-    buttonUniversitario(){
-        this.varValida = 0
-    }
-  },
-  mounted: function () {
-  },
-
-  watch: {
-    'form.TIPO_USUARIO': function(args){
-        console.log(args)
-    }
-  }
-}
-</script>
-
 <template>
     <div class="d-flex h-100">
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-0 login-left">
@@ -186,6 +120,72 @@ export default {
     </div>
 
 </template>
+
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+import InputText from 'primevue/inputtext';
+import FloatLabel from 'primevue/floatlabel';
+import InputMask from 'primevue/inputmask';
+import Calendar from 'primevue/calendar';
+import Dropdown from 'primevue/dropdown';
+import Password from 'primevue/password';
+import SelectButton from 'primevue/selectbutton';
+import Checkbox from 'primevue/checkbox';
+import InputNumber from 'primevue/inputnumber';
+
+export default {
+  components: {
+    RouterLink, RouterView, InputText, FloatLabel, InputMask, Calendar, Dropdown, Password, SelectButton, Checkbox, InputNumber
+  },
+  data: function () {
+    return {
+        varValida: 0,
+        form: {
+            NOMECOMPLETO: null,
+            EMAIL: null,
+            CPF: null,
+            CELULAR: null,
+            DATA_NASCIMENTO: null,
+            GENERO: null,
+            SENHA: null,
+            CONFIRMAR_SENHA: null,
+            CRP: null,
+            TIPO_USUARIO: 0
+        },
+        generos: [
+            { genero: 'Masculino' },
+            { genero: 'Feminino' },
+            { genero: 'Outro' }
+        ],
+        TIPOS_USUARIO: [
+            { label: 'Usuário', value: 0 },
+            { label: 'Psicologo', value: 1 },
+            { label: 'Universitario', value: 2 }
+        ],
+        termos: false
+    }
+  },
+  computed: {
+  },
+  methods: {
+    buttonPsicologo(){
+        this.varValida = 1
+    },
+
+    buttonUniversitario(){
+        this.varValida = 0
+    }
+  },
+  mounted: function () {
+  },
+
+  watch: {
+    'form.TIPO_USUARIO': function(args){
+        console.log(args)
+    }
+  }
+}
+</script>
 
 <style>
 main {

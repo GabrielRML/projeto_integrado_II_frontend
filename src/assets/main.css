@@ -71,3 +71,14 @@ a:hover {
   color: #48A3BF;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); 
 }
+
+/* Ajuste de estilo da class row */
+.row {
+  margin: 0;
+}
+
+/* Ajustando estilos multselect */
+.p-multiselect-items {
+  margin-bottom: 0;
+  padding-left: 0;
+}

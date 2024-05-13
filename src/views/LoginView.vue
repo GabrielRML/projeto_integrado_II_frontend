@@ -70,7 +70,6 @@ export default {
   methods: {
     async login(){
         try {
-            console.log(this.user);
             const { data } = await http.post('/authenticate', this.user);
             this.auth.setToken(data.id_token);
             const user = await http.get('/account', { headers: { Authorization: `Bearer ${this.auth.token}` } });

@@ -3,6 +3,7 @@ import { useAuthStore } from '../stores/auth.js';
 import CadastroView from '@/views/CadastroView.vue';
 import Home from '../views/home.vue'
 import LoginView from '@/views/LoginView.vue'
+import AgendamentoView from '@/views/AgendamentoView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/cadastro',
       name: 'cadastro',
       component: CadastroView
+    },
+    {
+      path: '/agendamento',
+      name: 'agendamento',
+      component: AgendamentoView
     }
   ]
 })
