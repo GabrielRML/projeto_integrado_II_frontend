@@ -48,7 +48,7 @@ export default {
 
     width: 200px;
     height: 200px;
-    padding: .5rem 1rem;
+    padding: 1rem .5rem;
     box-shadow: 1px 1px 5px;
 }
 

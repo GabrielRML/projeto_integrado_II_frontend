@@ -31,7 +31,7 @@
         <div class="row container-card col-md-8 col-lg-8 col-xl-8 col-11" style="border-radius: 10px;">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12 container-info-prestador">
                 <div class="d-flex align-items-center">
-                    <img src="../assets/avatar.png" alt="Foto de Perfil" width="100px">
+                    <img src="../../public/image/user.png" alt="Foto de Perfil" width="100px" style="margin: .5rem;">
                     <div class="d-flex flex-column">
                         <h5 class="username">Diego Moreira</h5>
                         <span class="fontColorInfo">Psicologia - 2 anos de experiência</span> 
@@ -39,8 +39,8 @@
                     </div>
                 </div>
 
-                <div class="fontColorInfo">
-                    <span>Autoestima, Sexualidade</span>
+                <div>
+                    <span class="especialidade">Autoestima</span>
                 </div>
 
                 <div style="padding: 10px 0;">
@@ -51,8 +51,9 @@
                     <span>FeedBack</span>
                 </div>
 
-                <div style="padding: 10px 0;">
+                <div class="d-flex justify-content-around" style="padding: 10px 0; font-weight: bold;">
                     <span>Tempo de sessão 50 min</span>
+                    <span style="color: #168118;">R$ 100,00</span>
                 </div>
             </div>
 
@@ -62,7 +63,12 @@
                         <TabPanel v-for="date in dates" :key="date.dateFormat">
                             <template #header>
                                 <div class="flex align-items-center gap-2">
-                                    <span class="font-bold white-space-nowrap">{{ date.dateFormat }}</span>
+                                    <span
+                                        class="font-bold white-space-nowrap tabs"    
+                                        :class="{ 'tabsActive': selectedTime.date === date.date }"
+                                    >
+                                        {{ date.dateFormat }}
+                                    </span>
                                 </div>
                             </template>
 
@@ -220,6 +226,7 @@ export default {
 </script>
 
 <style>
+
 .box-search {
     display: flex;
     justify-content: center;
@@ -233,6 +240,7 @@ export default {
 }
 
 .container-info-prestador {
+    padding-top: 1rem;
     background-color: white;
     border-radius: 10px;
 }
@@ -257,6 +265,10 @@ export default {
     padding: 0 1rem;
 }
 
+.p-tabview-nav-link {
+    text-decoration: none
+}
+
 .content-wrapper {
     max-height: 300px; 
     overflow-y: auto;
@@ -276,6 +288,15 @@ export default {
     cursor: pointer;
 }
 
+.tabs {
+    color: black;
+    text-decoration: none;
+}
+
+.tabsActive {
+    color: #48A3BF;
+}
+
 .selected-time {
     background-color: #348ba56b;
     border: 1px solid #48A3BF;
@@ -285,4 +306,14 @@ export default {
 .p-paginator {
     padding: 0;
 }
+
+.especialidade {
+    padding: .1rem .5rem;
+    border-radius: 1rem;
+
+    color: #7c7c7c;
+    font-weight: bold;
+    background-color: #cfcfcf7a;
+}
+
 </style>
