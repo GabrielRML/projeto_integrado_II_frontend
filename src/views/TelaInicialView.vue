@@ -1,32 +1,5 @@
 <template>
   <div>
-    <nav>
-      <div class="navbar navbar-expand-lg bg-info border-bottom border-body" style="height: 130px;">
-        <div to="/" class="navbar-brand" style="margin-left: 100px;">
-          <img src="../../public/logoSemFundo.svg" class="logo larger-image" alt="logo" style="margin-left: 30px; margin-top: 5px; width: 175px;">
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <h1 to="/" class="nav-link text-center" style="border-bottom: 3px solid #F0f0f0f0;">Pagina Inicial</h1>
-            </li>
-          </ul>
-
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button type="button"  to="/login"class="btn btn-light mx-0" onclick="window.location.href='/login'">Login</button>
-            </li>
-            <li class="nav-item">
-              <button to="/cadastro" class="btn mx-4" onclick="window.location.href='/cadastroUser'" style="background-color: #48A3BF; color: white;">Cadastro</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <div class="pagina-branca">
       <h1 style="border: 2px solid #000000; margin-top: 40px; margin-left: 250px; display: inline-block; padding: 5px 10px; border-radius: 10px;">
         Quem Somos Nós?
@@ -66,18 +39,6 @@
 </template>
 
 <style scoped>
-.navbar {
-  color: rgba(72, 163, 191, 0.481);
-}
-
-.nav-link.text-center {
-  font-size: xx-large;
-  display: flex;
-  color: aliceblue;
-  align-items: center;
-  justify-content: center;
-}
-
 .ia-integrada {
   text-align: center;
 }

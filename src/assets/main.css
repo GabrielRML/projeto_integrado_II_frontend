@@ -1,3 +1,5 @@
+@import 'primeicons/primeicons.css';
+
 * {
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -22,11 +24,23 @@ footer {
   height: 10vh;
 }
 
-a:link {
+.navbar {
+  background-color: #48A3BF;
+}
+
+.nav-link {
+  color: white;
+
+  &:hover {
+    color: rgb(212, 212, 212);
+  }
+}
+
+.link:link {
   color: #48A3BF;
 }
 
-a:hover {
+.link:hover {
   color: #3687a0;
 }
 

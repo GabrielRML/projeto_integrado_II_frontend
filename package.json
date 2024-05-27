@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "axios": "^1.6.8",
     "pinia": "^2.1.7",
+    "primeicons": "^7.0.0",
     "primevue": "^3.51.0",
     "sweetalert2": "^11.10.7",
     "vue": "^3.4.21",

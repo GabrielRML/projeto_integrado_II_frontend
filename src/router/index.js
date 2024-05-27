@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth.js';
 import CadastroView from '@/views/CadastroView.vue';
-import Home from '../views/home.vue'
+import TelaInicialView from '@/views/TelaInicialView.vue';
 import LoginView from '@/views/LoginView.vue'
-import AgendamentoView from '@/views/AgendamentoView.vue';
+import EspecialistasView from '@/views/EspecialistasView.vue';
+import SupervisionadoView from '@/views/SupervisionadoView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,22 +12,32 @@ const router = createRouter({
     {
       path: '/',
       name: 'Pagina Inicial',
-      component: Home
+      component: TelaInicialView
     },
     {
       path: '/login',
-      name: 'login',
+      name: 'Login',
       component: LoginView
     },
     {
       path: '/cadastro',
-      name: 'cadastro',
+      name: 'Cadastro',
       component: CadastroView
     },
     {
-      path: '/agendamento',
-      name: 'agendamento',
-      component: AgendamentoView
+      path: '/especialistas',
+      name: 'Especialistas',
+      component: EspecialistasView
+    },
+    {
+      path: '/supervisionados',
+      name: 'Supervisionados',
+      component: SupervisionadoView
+    },
+    {
+      path: '/avaliacao',
+      name: 'Avaliação',
+      component: () => import('@/views/AvaliacaoView.vue')
     }
   ]
 })

@@ -1,10 +1,11 @@
 <script>
 import {RouterLink, RouterView} from 'vue-router'
+import Navbar from '@/components/Navbar.component.vue'
 
 
 export default{
     components:{
-        RouterLink, RouterView
+        RouterLink, RouterView, Navbar
     },
     data: function () {
         return {
@@ -20,6 +21,10 @@ export default{
 </script>
 
 <template>
+  <header>
+    <Navbar />
+  </header>
+
   <main>
     <router-view></router-view>
   </main>

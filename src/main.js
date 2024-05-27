@@ -14,10 +14,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Import PrimeVue
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css'
+import Tooltip from 'primevue/tooltip';
 
 
 const app = createApp(App)
 app.use(PrimeVue);
+app.directive('tooltip', Tooltip);
 app.use(router);
 app.use(createPinia())
 
