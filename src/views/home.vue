@@ -43,7 +43,7 @@
 
 
   <div class="pagina-blue" style="height: 500px; border-radius: 0px; display: flex; align-items: center; padding: 20px;margin-top: 130px;">
-  <img class="image-nos" src="../../public/image/people.png" style="max-width: 22%; margin-right: 30px;margin-left: 50px;">
+  <img class="image-nos" src="../../public/image/people.png" style="max-width: 20%; margin-right: 30px;margin-left: 50px;">
   <div style="padding: 20px; border-radius: 10px; color: white; flex: 1;">
     <h1 class="h1-center text-center" style="margin-bottom: 45px; color: white;">
       Quem somos nós?
@@ -112,7 +112,7 @@
       Esses destaques ajudam você a relembrar os pontos essenciais discutidos e oferecem recomendações personalizadas para seu progresso emocional.
     </h4>
   </div>
-  <img class="image-ia" src="../../public/image/ia.png" style="max-width: 22%; margin-left: 30px; border-radius: 10px;margin-right: 50px;">
+  <img class="image-ia" src="../../public/image/ia.png" style="max-width: 20%; margin-left: 30px; border-radius: 10px;margin-right: 50px;">
 </div>
 
   </div>
