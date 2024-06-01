@@ -1,0 +1,84 @@
+* {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: 90vh;
+}
+
+footer {
+  background-color: #e0e0e0;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  height: 10vh;
+}
+
+a:link {
+  color: #48A3BF;
+}
+
+a:hover {
+  color: #3687a0;
+}
+
+.custom-button-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #48A3BF;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.custom-button-primary:hover {
+  background-color: #48A3BF;
+  color: #ffffff;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); 
+}
+
+.custom-button-secundary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #48A3BF;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.custom-button-secundary:hover {
+  background-color: #ffffff;
+  color: #48A3BF;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); 
+}
+
+/* Ajuste de estilo da class row */
+.row {
+  margin: 0;
+}
+
+/* Ajustando estilos multselect */
+.p-multiselect-items {
+  margin-bottom: 0;
+  padding-left: 0;
+}
