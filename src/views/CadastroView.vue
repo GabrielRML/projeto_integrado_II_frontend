@@ -2,7 +2,7 @@
     <div class="d-flex h-100">
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-0 login-left">
             <div class="col-md-8 col-lg-8 col-xl-8">
-                <img src="/logoSemFundo.svg"
+                <img src="../../public/image/logo-3.png"
                 class="img-fluid larger-image" alt="Logo">
             </div>
         </div>
