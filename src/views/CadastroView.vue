@@ -11,21 +11,34 @@
             <div class="title">
                 <h1>Cadastro</h1>
             </div>
-
+                
             <div style="padding: 2%;">
-                <div class="col-12" style="margin-top: 2rem;">
-                    <FloatLabel>
-                        <InputText id="nome" v-model="this.form.NOMECOMPLETO" :style="{ width: '100%' }" />
-                        <label for="nome">Nome Completo</label>
-                    </FloatLabel>
+
+                <div class="row">
+                    <div class="col-12" style="margin-top: 2rem;">
+                        <FloatLabel>
+                            <InputText id="nome" v-model="this.form.login" :style="{ width: '100%' }" />
+                            <label for="nome">Nome de usuário</label>
+                        </FloatLabel>
+                    </div>
                 </div>
 
-                <div class="col-12" style="margin-top: 2rem;">
-                    <FloatLabel>
-                        <InputText id="email" v-model="this.form.EMAIL" :style="{ width: '100%' }" />
-                        <label for="email">Email</label>
-                    </FloatLabel>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="margin-top: 2rem;">
+                        <FloatLabel>
+                            <InputText id="nome" v-model="this.form.firstName" :style="{ width: '100%' }" />
+                            <label for="nome">Nome</label>
+                        </FloatLabel>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="margin-top: 2rem;">
+                        <FloatLabel>
+                            <InputText id="nome" v-model="this.form.lastName" :style="{ width: '100%' }" />
+                            <label for="nome">Sobrenome</label>
+                        </FloatLabel>
+                    </div>
                 </div>
+
 
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="margin-top: 2rem;">
@@ -37,8 +50,8 @@
 
                     <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="margin-top: 2rem;">
                         <FloatLabel>
-                            <InputMask id="celular" v-model="this.form.CELULAR" mask="(99) 99999-9999" :style="{ width: '100%' }" />
-                            <label for="celular">Celular</label>
+                            <InputText id="email" v-model="this.form.email" />
+                            <label for="email">Email</label>
                         </FloatLabel>
                     </div>
                 </div>
@@ -62,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="margin-top: 2rem;">
                         <FloatLabel>
-                            <Password id="password" v-model="this.form.SENHA" toggleMask :feedback="false" :style="{ width: '100%' }" />
+                            <Password id="password" v-model="this.form.password" toggleMask :feedback="false" :style="{ width: '100%' }" />
                             <label for="password">Senha</label>
                         </FloatLabel>
                     </div>
@@ -108,7 +121,7 @@
                 </div>
                 
                 <div class="text-center pt-2" style="margin-top: 2%;">
-                    <button type="button" class="btn custom-button-secundary">Cadastrar-se</button>
+                    <button type="button" @click="cadastro" class="btn custom-button-secundary">Cadastrar-se</button>
                 </div>
             </div>
 
@@ -132,6 +145,7 @@ import Password from 'primevue/password';
 import SelectButton from 'primevue/selectbutton';
 import Checkbox from 'primevue/checkbox';
 import InputNumber from 'primevue/inputnumber';
+import axios from 'axios';
 
 export default {
   components: {
@@ -141,16 +155,20 @@ export default {
     return {
         varValida: 0,
         form: {
-            NOMECOMPLETO: null,
-            EMAIL: null,
+            id: null,
+            login: null,
+            firstName: null,
+            lastName: null,
+            email: null,
             CPF: null,
-            CELULAR: null,
             DATA_NASCIMENTO: null,
             GENERO: null,
             SENHA: null,
             CONFIRMAR_SENHA: null,
             CRP: null,
-            TIPO_USUARIO: 0
+            TIPO_USUARIO: 0,
+            langKey: 'pt-br',
+            activated: 1
         },
         generos: [
             { genero: 'Masculino' },
@@ -174,7 +192,173 @@ export default {
 
     buttonUniversitario(){
         this.varValida = 0
+    },
+
+    cadastro(){
+        
+        if(this.form.firstName == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo NOME",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        // else if(this.form.SOBRENOME == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo SOBRENOME",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.CPF == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo CPF",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.EMAIL == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo EMAIL",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.DATA_NASCIMENTO == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo DATA DE NASCIMENTO",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.GENERO == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo GENERO",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.SENHA == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo SENHA",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        // else if(this.form.CONFIRMAR_SENHA == null){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Preencha o campo CONFIRMAR SENHA",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }else if(this.form.SENHA != this.form.CONFIRMAR_SENHA){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Senhas não são iguais!!!",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }else if(this.termos == false){
+        //     Swal.fire({
+        //     position: "top",
+        //     icon: "error",
+        //     title: "Aceite os termos e politicas do site!!!",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
+        // }
+        else{
+            console.log(this.form)
+            let user = {
+                activated: true,
+                email: this.form.email,
+                firstName: this.form.firstName,
+                id: null,
+                langKey: "pt-br",
+                lastName: this.form.lastName,
+                login: this.form.login,
+                password: this.form.password
+            };
+            console.log(user)
+            // Realiza a requisição POST utilizando Axios
+            axios.post('http://localhost:8080/api/register', user)
+            .then(response => {
+
+                let id = response.data.id;
+                let login = response.data.login;
+                let birthDateUTC = new Date(this.form.DATA_NASCIMENTO).toISOString();
+
+                if(this.form.TIPO_USUARIO == 0){
+                    let pessoa = {
+                        id: null,
+                        cpf: this.form.cpf, 
+                        birthDate: birthDateUTC, 
+                        internalUser: { 
+                            id: id,
+                            login: login
+                        }
+                    };
+                    setTimeout(() => {
+                    axios.post('http://localhost:8080/api/usuarios', pessoa)
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        console.log('Erro ao enviar requisição:', error);
+                    });
+                    }, 1500);
+                }else{
+                    let birthDateUTC = new Date(this.form.DATA_NASCIMENTO).toISOString();
+                    let pessoa = {
+                        id: null,
+                        cpf: this.form.cpf, 
+                        birthDate: birthDateUTC,
+                        description: 'teste',
+                        price: 25,
+                        timeSession: 1,
+                        identification: 'teste',
+                        specialistType: 'PSICOLOGO',
+                        internalUser: { 
+                            id: id,
+                            login: login
+                        }
+                    };
+                    setTimeout(() => {
+                    axios.post('http://localhost:8080/api/especialistas', pessoa)
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        console.log('Erro ao enviar requisição:', error);
+                    });
+                    }, 1500);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar requisição:', error);
+            });
+
+
+        }
     }
+
   },
   mounted: function () {
   },

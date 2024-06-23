@@ -15,10 +15,10 @@
 
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button type="button"  to="/login"class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
+              <button type="button"  to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
             </li>
             <li class="nav-item">
-              <button to="/cadastro" class="btn mx-5" onclick="window.location.href='/cadastroUser'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
+              <button to="/cadastro" class="btn mx-5" onclick="window.location.href='/cadastro'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
             </li>
           </ul>
         </div>
