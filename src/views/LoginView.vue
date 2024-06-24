@@ -17,7 +17,7 @@
                         <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2%;">
                             <FloatLabel>
                                 <InputText id="email" v-model="user.username" :style="{ width: '100%' }" />
-                                <label for="email">Email</label>
+                                <label for="email">Usuário</label>
                             </FloatLabel>
                         </div>
                 
@@ -74,8 +74,15 @@ export default {
             this.auth.setToken(data.id_token);
             const user = await http.get('/account', { headers: { Authorization: `Bearer ${this.auth.token}` } });
             this.auth.setUser(user.data);
+            window.location.href = "/";
         } catch (error) {
-            console.error(error);
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: error.response.data.detail,
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
   },

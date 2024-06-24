@@ -205,85 +205,85 @@ export default {
             timer: 1500
         });
         }
-        // else if(this.form.SOBRENOME == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo SOBRENOME",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.CPF == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo CPF",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.EMAIL == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo EMAIL",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.DATA_NASCIMENTO == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo DATA DE NASCIMENTO",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.GENERO == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo GENERO",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.SENHA == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo SENHA",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
-        // else if(this.form.CONFIRMAR_SENHA == null){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Preencha o campo CONFIRMAR SENHA",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }else if(this.form.SENHA != this.form.CONFIRMAR_SENHA){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Senhas não são iguais!!!",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }else if(this.termos == false){
-        //     Swal.fire({
-        //     position: "top",
-        //     icon: "error",
-        //     title: "Aceite os termos e politicas do site!!!",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        // }
+        else if(this.form.lastName == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo SOBRENOME",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.CPF == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo CPF",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.email == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo EMAIL",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.DATA_NASCIMENTO == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo DATA DE NASCIMENTO",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.GENERO == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo GENERO",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.password == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo SENHA",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
+        else if(this.form.CONFIRMAR_SENHA == null){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Preencha o campo CONFIRMAR SENHA",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }else if(this.form.password != this.form.CONFIRMAR_SENHA){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Senhas não são iguais!!!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }else if(this.termos == false){
+            Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Aceite os termos e politicas do site!!!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        }
         else{
             console.log(this.form)
             let user = {
@@ -316,12 +316,27 @@ export default {
                         }
                     };
                     setTimeout(() => {
-                    axios.post('http://localhost:8080/api/usuarios', pessoa)
-                    .then(response => {
-                        console.log(response);
-                    })
+                        axios.post('http://localhost:8080/api/usuarios', pessoa)
+                        .then(response => {
+                            Swal.fire({
+                                position: "top",
+                                icon: "success",
+                                title: "Sua conta foi criada com sucesso",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            setTimeout(() => {
+                                window.location.href = "/login";
+                            }, 1500);
+                        })
                     .catch(error => {
-                        console.log('Erro ao enviar requisição:', error);
+                        Swal.fire({
+                            position: "top",
+                            icon: "error",
+                            title: "Erro ao criar sua conta!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     });
                     }, 1500);
                 }else{
@@ -343,16 +358,38 @@ export default {
                     setTimeout(() => {
                     axios.post('http://localhost:8080/api/especialistas', pessoa)
                     .then(response => {
-                        console.log(response);
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+                            title: "Sua conta foi criada com sucesso",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(() => {
+                            window.location.href = "/login";
+                        }, 1500);
                     })
                     .catch(error => {
-                        console.log('Erro ao enviar requisição:', error);
+                        console.log(error)
+                        Swal.fire({
+                            position: "top",
+                            icon: "error",
+                            title: "Erro ao criar sua conta!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     });
                     }, 1500);
                 }
             })
             .catch(error => {
-                console.error('Erro ao enviar requisição:', error);
+                Swal.fire({
+                    position: "top",
+                    icon: "error",
+                    title: "Erro ao criar sua conta!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             });
 
 
