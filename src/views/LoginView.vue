@@ -74,7 +74,6 @@ export default {
             this.auth.setToken(data.id_token);
             const user = await http.get('/account', { headers: { Authorization: `Bearer ${this.auth.token}` } });
             this.auth.setUser(user.data);
-            window.location.href = "/";
         } catch (error) {
             Swal.fire({
                 position: "top",

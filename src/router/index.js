@@ -4,6 +4,7 @@ import CadastroView from '@/views/CadastroView.vue';
 import Home from '../views/home.vue'
 import LoginView from '@/views/LoginView.vue'
 import AgendamentoView from '@/views/AgendamentoView.vue';
+import TelaDeAvaliacaoView from '@/views/TelaDeAvaliacaoView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/agendamento',
       name: 'agendamento',
       component: AgendamentoView
+    },
+    {
+      path: '/avaliacao',
+      name: 'avaliacao',
+      component: TelaDeAvaliacaoView
     }
   ]
 })
