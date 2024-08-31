@@ -10,12 +10,12 @@
     <div class="d-flex align-items-center w-100 justify-content-between">
       <!-- Texto centralizado -->
       <div class="mx-auto d-flex align-items-center">
-        <router-link to="/" class="pagina-inicial" style="text-decoration: none; color: inherit;">
+        <router-link to="/" class="pagina-inicial" style="text-decoration: none; color: #fff;">
           <h3 style="margin: 0;">Página Inicial</h3>
         </router-link>
         
         <router-link to="/supervisor" class="supervisor" style="text-decoration: none; color: inherit;">
-          <h3 class="alunos with-line" style="margin: 0; border-bottom: 3px solid #000; margin-left: 35px;">
+          <h3 class="alunos with-line" style="margin: 0; border-bottom: 3px solid #fff; margin-left: 35px;color: #fff;">
             Alunos
           </h3>
         </router-link>
@@ -41,7 +41,7 @@
   </div>
 
 </div>
-  <div class="text-alunos text-lg-center" style="margin-top: 10px;">
+  <div class="text-alunos text-lg-center" style="margin-top: 10px;color: rgba(72, 163, 191, 0.481);">
     <h1>Alunos</h1>
   </div>
 
