@@ -1,31 +1,30 @@
 <template>
     <div class="navbar navbar-expand-lg" style="height: 120px; background-color: rgba(72, 163, 191, 0.481); display: flex; align-items: center; padding: 0 20px;">
   <div class="container-fluid d-flex justify-content-between align-items-center">
-    <!-- Logo -->
+
     <div class="navbar-brand">
       <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="width: 160px;">
     </div>
 
-    <!-- Texto centralizado -->
-    <div class="mx-auto d-flex align-items-center">
-      <router-link to="/" class="pagina-inicial" style="text-decoration: none; color: inherit;">
-        <h3 style="margin: 0;">Página Inicial</h3>
-      </router-link>
-    </div>
 
-    <!-- Texto à direita -->
-    <div class="ml-auto d-flex align-items-center">
-      <router-link to="/supervisor" class="supervisor" style="text-decoration: none; color: inherit;">
-        <h3 class="alunos with-line" style="margin: 0; border-bottom: 3px solid #000;">
-          Alunos
-        </h3>
-      </router-link>
+    <div class="d-flex align-items-center w-100 justify-content-between">
+      <!-- Texto centralizado -->
+      <div class="mx-auto d-flex align-items-center">
+        <router-link to="/" class="pagina-inicial" style="text-decoration: none; color: inherit;">
+          <h3 style="margin: 0;">Página Inicial</h3>
+        </router-link>
+        
+        <router-link to="/supervisor" class="supervisor" style="text-decoration: none; color: inherit;">
+          <h3 class="alunos with-line" style="margin: 0; border-bottom: 3px solid #000; margin-left: 35px;">
+            Alunos
+          </h3>
+        </router-link>
+      </div>
     </div>
   </div>
 
-
   <div class="notification-icon">
-    <img src="../../public/image/notification.png" alt="" style="width: 30px;margin-right: 20px;">
+    <img src="../../public/image/notification.png" alt="" style="width: 25px;margin-right: 15px;">
   </div>
 
   <div class="user-icon">
@@ -68,7 +67,7 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
+
         <div class="col-md-3">
           <div class="card">
             <img src="../../public/image/avatar-2.png" alt=""style="margin-top: 10px;">
@@ -89,7 +88,7 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
+
         <div class="col-md-3">
           <div class="card">
             <img src="../../public/image/avatar-3.png" alt=""style="margin-top: 10px;">
@@ -110,7 +109,7 @@
           </div>
         </div>
 
-        <!-- Card 4 -->
+
         <div class="col-md-3">
           <div class="card">
             <img src="../../public/image/avatar-4.png" alt="" style="margin-top: 10px;">
@@ -153,4 +152,5 @@
   background-color: white;
   border-radius: 10px;
 }
+
 </style>
