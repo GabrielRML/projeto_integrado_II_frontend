@@ -5,6 +5,8 @@ import Home from '../views/home.vue'
 import LoginView from '@/views/LoginView.vue'
 import AgendamentoView from '@/views/AgendamentoView.vue';
 import TelaDeAvaliacaoView from '@/views/TelaDeAvaliacaoView.vue';
+import Supervisor from '@/views/SupervisorView.vue';
+import SupervisorView from '@/views/SupervisorView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +35,11 @@ const router = createRouter({
       path: '/avaliacao',
       name: 'avaliacao',
       component: TelaDeAvaliacaoView
+    },
+    {
+      path: '/supervisor',
+      name: 'supervisor',
+      component: SupervisorView
     }
   ]
 })
