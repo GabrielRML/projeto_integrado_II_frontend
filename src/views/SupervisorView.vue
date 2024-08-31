@@ -3,7 +3,8 @@
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
     <div class="navbar-brand">
-      <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="width: 160px;">
+      <router-link to="/">
+      <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="width: 160px;"></router-link>
     </div>
 
 
