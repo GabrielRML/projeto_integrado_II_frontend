@@ -4,6 +4,7 @@
             <div class="col-md-8 col-lg-8 col-xl-8">
                 <img src="../../public/image/logo-3.png"
                 class="img-fluid larger-image" alt="Logo">
+                <h1 id="logo" style="text-align: center;">Clinical Link</h1>
             </div>
         </div> 
         <div class="col-md-6 col-lg-6 col-xl-8 col-12 d-flex flex-column justify-content-center">
@@ -11,7 +12,8 @@
                 <div class="title">
                     <h1>Login</h1>
                 </div>
-            
+                
+                
                 <div class="col-md-12 col-lg-12 col-xl-12 col-12">
                     <form @submit.prevent="login" class="d-flex flex-column justify-content-between align-items-center">
                         <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2%;">
@@ -31,7 +33,7 @@
             
                     <div class="d-flex justify-content-center text-center pt-2" style="margin-top: 2%; gap: 2%;">
                         <button type="button" @click="login" class="btn custom-button-primary">Entrar</button>
-                        <!-- <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button> -->
+                        <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button>
                     </div>
                 
                     <div class="text-center mt-2">
@@ -68,22 +70,39 @@ export default {
   computed: {
   },
   methods: {
-    async login(){
-        try {
-            const { data } = await http.post('/authenticate', this.user);
-            this.auth.setToken(data.id_token);
-            const user = await http.get('/account', { headers: { Authorization: `Bearer ${this.auth.token}` } });
-            this.auth.setUser(user.data);
-        } catch (error) {
-            Swal.fire({
-                position: "top",
-                icon: "error",
-                title: error.response.data.detail,
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
+    async login() {
+    try {
+        // Envia a solicitação de autenticação
+        const { data } = await http.post('/authenticate', this.user);
+
+        // Armazena o token de autenticação
+        this.auth.setToken(data.id_token);
+
+        // Obtém as informações do usuário
+        const userResponse = await http.get('/account', {
+            headers: { Authorization: `Bearer ${this.auth.token}` }
+        });
+
+        // Armazena os dados do usuário no localStorage
+        const userData = userResponse.data;
+        localStorage.setItem('profile', JSON.stringify(userData));
+
+        // Atualiza o usuário na autenticação
+        this.auth.setUser(userData);
+        
+        // Opcional: redirecionar o usuário para uma página de perfil ou dashboard
+        // this.$router.push('/profile');
+
+    } catch (error) {
+        Swal.fire({
+            position: "top",
+            icon: "error",
+            title: error.response.data.detail,
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
+}
   },
   mounted: function () {}
 }

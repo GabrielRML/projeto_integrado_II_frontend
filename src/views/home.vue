@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+<!--     <nav>
       <div class="navbar navbar-expand-lg " style="height: 120px; background: white;">
         <div to="/" class="navbar-brand" style="margin-left: 100px;">
           <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="margin-left: 0px; margin-top: 135px; width: 270px;">
@@ -23,8 +23,8 @@
           </ul>
         </div>
       </div>
-    </nav>
-
+    </nav> -->
+    <navBarView></navBarView>
     <div class="pagina-white">
       <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
     <div style="max-width: 40%;">
@@ -120,20 +120,34 @@
   </div>
 </template>
 
-<style scoped>
-.navbar {
-  color: rgba(72, 163, 191, 0.481);
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+// import axios from 'axios';
+import navBarView from '../components/navBarView.vue';
+
+export default {
+  components: {
+    RouterLink, RouterView, navBarView
+  },
+  data: function () {
+    return {
+    }
+  },
+  computed: {
+  },
+  methods: {
+
+  },
+  mounted: function () {
+  },
 }
+</script>
+
+
+
+<style scoped>
 .bg-info{
   color: #48A3BF;
-}
-
-.nav-link.text-center {
-  font-size: xx-large;
-  display: flex;
-  color: aliceblue;
-  align-items: center;
-  justify-content: center;
 }
 
 .ia-integrada {

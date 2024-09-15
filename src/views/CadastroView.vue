@@ -326,7 +326,7 @@ export default {
                                 timer: 1500
                             });
                             setTimeout(() => {
-                                window.location.href = "/login";
+                                window.location.href = "/";
                             }, 1500);
                         })
                     .catch(error => {
