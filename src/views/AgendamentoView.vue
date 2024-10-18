@@ -1,5 +1,6 @@
 <template>
-    <div class="box-search">
+        <navBarView></navBarView>
+        <div class="box-search">
         <div class="row col-md-10 col-lg-10 col-xl-10 col-10">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12" style="padding-top: 1.7rem;">
                 <IconField iconPosition="left">
@@ -87,10 +88,11 @@ import InputText from 'primevue/inputtext';
 import MultiSelect from 'primevue/multiselect';
 import FloatLabel from 'primevue/floatlabel';
 import http from '@/services/http.js';
+import navBarView from '../components/navBarView.vue';
 
 export default {
     components: {
-        IconField, InputIcon, InputText, MultiSelect, FloatLabel, http
+        IconField, InputIcon, InputText, MultiSelect, FloatLabel, http,navBarView
     },
     name: 'AgendamentoView',
     data() {

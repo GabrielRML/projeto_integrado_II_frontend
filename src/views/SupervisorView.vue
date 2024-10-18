@@ -1,47 +1,6 @@
 <template>
-    <div class="navbar navbar-expand-lg" style="height: 120px; background-color: rgba(72, 163, 191, 0.481); display: flex; align-items: center; padding: 0 20px;">
-  <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <div class="navbar-brand">
-      <router-link to="/">
-      <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="width: 160px;"></router-link>
-    </div>
-
-
-    <div class="d-flex align-items-center w-100 justify-content-between">
-      <!-- Texto centralizado -->
-      <div class="mx-auto d-flex align-items-center">
-        <router-link to="/" class="pagina-inicial" style="text-decoration: none; color: #fff;">
-          <h3 style="margin: 0;">Página Inicial</h3>
-        </router-link>
-        
-        <router-link to="/supervisor" class="supervisor" style="text-decoration: none; color: inherit;">
-          <h3 class="alunos with-line" style="margin: 0; border-bottom: 3px solid #fff; margin-left: 35px;color: #fff;">
-            Alunos
-          </h3>
-        </router-link>
-      </div>
-    </div>
-  </div>
-
-  <div class="notification-icon">
-    <img src="../../public/image/notification.png" alt="" style="width: 25px;margin-right: 15px;">
-  </div>
-
-  <div class="user-icon">
-    <router-link to="/usuario" class="usuario">
-      <img src="../../public/image/user-icon.png" alt="" style="width: 60px;margin-right: 5px;">
-    </router-link>
-  </div>
-
-  <div class="exit-icon">
-    <router-link to="/login" class="exit">
-      <img src="../../public/image/exit.png" alt="" style="width: 45px;">
-    </router-link>
-
-  </div>
-
-</div>
+  <navBarView></navBarView>
   <div class="text-alunos text-lg-center" style="margin-top: 10px;color: rgba(72, 163, 191, 0.481);">
     <h1>Alunos</h1>
   </div>
@@ -134,7 +93,36 @@
     </div>
 </template>
 <script>
+import { RouterLink, RouterView } from 'vue-router'
+// import axios from 'axios';
+import navBarView from '../components/navBarView.vue';
 
+export default {
+  components: {
+    RouterLink, RouterView, navBarView
+  },
+  data: function () {
+    return {
+        profile: {
+                name: '',
+                email: '',
+                address: '',
+                hobbies: '',
+                job: '',
+                skill: ''
+            }
+    }
+  },
+  computed: {
+  },
+  methods: {
+
+  },
+  mounted: function () {
+    const profileData = JSON.parse(localStorage.getItem('profile')) || {};
+        this.profile = { ...this.profile, ...profileData };
+  },
+}
 </script>
 <style>
 .box-search {
