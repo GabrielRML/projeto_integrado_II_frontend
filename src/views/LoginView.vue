@@ -1,47 +1,12 @@
 <template>
     <div class="d-flex h-100">
-<<<<<<< Updated upstream
-        <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-0 login-left">
-            <div class="col-md-8 col-lg-8 col-xl-8">
-                <img src="../../public/image/logo-3.png"
-                class="img-fluid larger-image" alt="Logo">
-            </div>
-        </div> 
-        <div class="col-md-6 col-lg-6 col-xl-8 col-12 d-flex flex-column justify-content-center">
-            <div class="d-flex flex-column align-items-center justify-content-between">
-                <div class="title">
-                    <h1>Login</h1>
-                </div>
-            
-                <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-                    <form @submit.prevent="login" class="d-flex flex-column justify-content-between align-items-center">
-                        <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2%;">
-                            <FloatLabel>
-                                <InputText id="email" v-model="user.username" :style="{ width: '100%' }" />
-                                <label for="email">Usuário</label>
-                            </FloatLabel>
-                        </div>
-                
-                        <div class="col-md-8 col-lg-8 col-xl-4 col-8" style="margin-top: 2rem;">
-                            <FloatLabel>
-                                <Password id="senha" v-model="user.password" toggleMask :feedback="false" :style="{ width: '100%' }" />
-                                <label for="senha">Senha</label>
-                            </FloatLabel>
-                        </div>
-                    </form>
-            
-                    <div class="d-flex justify-content-center text-center pt-2" style="margin-top: 2%; gap: 2%;">
-                        <button type="button" @click="login" class="btn custom-button-primary">Entrar</button>
-                        <!-- <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button> -->
-                    </div>
-=======
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-12 login-left">
             <div class="col-md-8 col-lg-8 col-xl-8 text-center">
                 <img src="../../public/image/logo-3.png" class="img-fluid larger-image" alt="Logo">
                 <h1 id="logo">Clinical Link</h1>
             </div>
         </div>
-    
+
         <div class="col-md-6 col-lg-6 col-xl-8 col-12 d-flex flex-column justify-content-center align-items-center login-right">
             <div class="col-md-8 col-lg-6 col-xl-4">
                 <h1 class="titleLogin text-center mb-4">Login</h1>
@@ -52,31 +17,28 @@
                             <label for="email">Usuário</label>
                         </FloatLabel>
                     </div>
-    
+
                     <div class="mb-4 w-100">
                         <FloatLabel>
                             <Password id="senha" v-model="user.password" toggleMask :feedback="false" :style="{ width: '100%' }" />
                             <label for="senha">Senha</label>
                         </FloatLabel>
                     </div>
-    
+
                     <div class="d-flex justify-content-center text-center gap-3 w-100">
                         <button type="button" @click="login" class="btn custom-button-primary w-100">Entrar</button>
                         <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button>
                     </div>    
->>>>>>> Stashed changes
-                
                 </form>
-    
+
                 <div class="text-center mt-3">
                     <a href="#">Esqueceu a senha?</a>
                 </div>
             </div>
         </div>
     </div>
-    
-
 </template>
+
 
 <script>
 import Swal from 'sweetalert2';

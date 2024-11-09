@@ -1,8 +1,7 @@
 <template>
-<<<<<<< Updated upstream
-  <div>
+  <div style="overflow-y: auto; max-height: 100vh;">
     <nav>
-      <div class="navbar navbar-expand-lg " style="height: 120px; background: white;">
+      <div class="navbar navbar-expand-lg" style="height: 120px; background: white;">
         <div to="/" class="navbar-brand" style="margin-left: 100px;">
           <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="margin-left: 0px; margin-top: 135px; width: 270px;">
         </div>
@@ -11,12 +10,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            
           </ul>
-
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button type="button"  to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
+              <button type="button" to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
             </li>
             <li class="nav-item">
               <button to="/cadastro" class="btn mx-5" onclick="window.location.href='/cadastro'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
@@ -26,24 +23,14 @@
       </div>
     </nav>
 
-=======
-  <div style="overflow-y: auto; max-height: 100vh;">
-    <navBarView></navBarView>
->>>>>>> Stashed changes
     <div class="pagina-white">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px; margin-right: 10px;">
         <div style="max-width: 40%;">
-          <h1 style="padding: 2px 10px;font-size: 60px;color: black;margin-top: 70px;">
-            Psicólogos online ao seu alcance
-          </h1>
-          <h4 style="margin-top: 30px; color: grey;">
-            Agora você pode conversar com um psicólogo online a qualquer hora e qualquer lugar com segurança através da nossa plataforma
-          </h4>
-          <button style="margin-top: 80px; padding: 10px 20px; font-size: 35px; color: white; background-color: #48A3BF; border: none; border-radius: 10px; cursor: pointer;">
-            Agende sua consulta
-          </button>
+          <h1 style="padding: 2px 10px; font-size: 60px; color: black; margin-top: 70px;">Psicólogos online ao seu alcance</h1>
+          <h4 style="margin-top: 30px; color: grey;">Agora você pode conversar com um psicólogo online a qualquer hora e qualquer lugar com segurança através da nossa plataforma</h4>
+          <button style="margin-top: 80px; padding: 10px 20px; font-size: 35px; color: white; background-color: #48A3BF; border: none; border-radius: 10px; cursor: pointer;">Agende sua consulta</button>
         </div>
-        <img src="../../public/image/3.png" alt="capa" style="max-width: 60%;margin-top: 110px;">
+        <img src="../../public/image/3.png" alt="capa" style="max-width: 60%; margin-top: 110px;">
       </div>
 
       <div class="pagina-blue" style="height: 500px; border-radius: 0px; display: flex; align-items: center; padding: 20px;margin-top: 130px;">
