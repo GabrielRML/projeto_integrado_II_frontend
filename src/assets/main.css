@@ -82,3 +82,13 @@ a:hover {
   margin-bottom: 0;
   padding-left: 0;
 }
+
+/* Removendo o bug do Dropdown padding-left: 2rem */
+.p-dropdown-items {
+  padding: 0.25rem;
+}
+
+/* Removendo bug do input do password não ficar com width 100% */
+.p-inputtext {
+  width: 100%;
+}

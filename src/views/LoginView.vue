@@ -15,8 +15,8 @@
                 <form @submit.prevent="login" class="d-flex flex-column justify-content-center align-items-center w-100">
                     <div class="mb-3 w-100">
                         <FloatLabel>
-                            <InputText id="email" v-model="user.username" :style="{ width: '100%' }" />
-                            <label for="email">Usuário</label>
+                            <InputText id="email" v-model="user.email" :style="{ width: '100%' }" />
+                            <label for="email">Email</label>
                         </FloatLabel>
                     </div>
     
@@ -58,7 +58,7 @@ export default {
   data: function () {
     return {
         user: {
-            username: '',
+            email: '',
             password: ''
         },
         auth: useAuthStore()
