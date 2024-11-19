@@ -1,7 +1,8 @@
 <template>
-  <div style="overflow-y: auto; max-height: 100vh;">
+<<<<<<< Updated upstream
+  <div>
     <nav>
-      <div class="navbar navbar-expand-lg" style="height: 120px; background: white;">
+      <div class="navbar navbar-expand-lg " style="height: 120px; background: white;">
         <div to="/" class="navbar-brand" style="margin-left: 100px;">
           <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="margin-left: 0px; margin-top: 135px; width: 270px;">
         </div>
@@ -10,27 +11,39 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
+            
           </ul>
+
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button type="button" to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
+              <button type="button"  to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
             </li>
             <li class="nav-item">
-              <button to="/cadastro" class="btn mx-5" onclick="window.location.href='/cadastro'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
+              <button type="button" class="btn mx-5" onclick="window.location.href='/cadastro'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+=======
+  <div style="overflow-y: auto; max-height: 100vh;">
+    <navBarView></navBarView>
+>>>>>>> Stashed changes
     <div class="pagina-white">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px; margin-right: 10px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
         <div style="max-width: 40%;">
-          <h1 style="padding: 2px 10px; font-size: 60px; color: black; margin-top: 70px;">Psicólogos online ao seu alcance</h1>
-          <h4 style="margin-top: 30px; color: grey;">Agora você pode conversar com um psicólogo online a qualquer hora e qualquer lugar com segurança através da nossa plataforma</h4>
-          <button style="margin-top: 80px; padding: 10px 20px; font-size: 35px; color: white; background-color: #48A3BF; border: none; border-radius: 10px; cursor: pointer;">Agende sua consulta</button>
+          <h1 style="padding: 2px 10px;font-size: 60px;color: black;margin-top: 70px;">
+            Psicólogos online ao seu alcance
+          </h1>
+          <h4 style="margin-top: 30px; color: grey;">
+            Agora você pode conversar com um psicólogo online a qualquer hora e qualquer lugar com segurança através da nossa plataforma
+          </h4>
+          <button style="margin-top: 80px; padding: 10px 20px; font-size: 35px; color: white; background-color: #48A3BF; border: none; border-radius: 10px; cursor: pointer;">
+            Agende sua consulta
+          </button>
         </div>
-        <img src="../../public/image/3.png" alt="capa" style="max-width: 60%; margin-top: 110px;">
+        <img src="../../public/image/3.png" alt="capa" style="max-width: 60%;margin-top: 110px;">
       </div>
 
       <div class="pagina-blue" style="height: 500px; border-radius: 0px; display: flex; align-items: center; padding: 20px;margin-top: 130px;">
@@ -87,26 +100,25 @@
             </div>
           </div>
         </div>
-
-        <div class="pagina-blue-2" style="height: 500px; display: flex; align-items: center; padding: 20px; border-radius: 0px;">
-          <div style="padding: 20px; color: white; flex: 1; margin-left: 60px">
-            <h1 class="h1-center" style="margin-bottom: 45px; color: white; text-align: left;">
-              Inteligência artificial nas consultas!
-            </h1>
-            <h4 class="h3-text" style="font-size: 26px; text-align: left;">
+  
+        <div class="pagina-blue-2" style="height: 500px; display: flex; align-items: center; padding: 20px; background-color: #48A3BF;">
+          <div style="color: white; flex: 1; margin-left: 60px;">
+            <h1 style="margin-bottom: 45px; color: white;">Inteligência artificial nas consultas!</h1>
+            <p style="font-size: 26px;">
               Durante a consulta por vídeo, nossa IA analisa linguagem corporal, tom de voz e expressões faciais para entender suas emoções e necessidades.
               <br><br>
               Após a sessão, a IA gera automaticamente destaques importantes, como insights e mudanças emocionais, em um resumo personalizado.
               <br><br>
               Esses destaques ajudam você a relembrar os pontos essenciais discutidos e oferecem recomendações personalizadas para seu progresso emocional.
-            </h4>
+            </p>
           </div>
-          <img class="image-ia" src="../../public/image/ia.png" style="max-width: 20%; margin-left: 30px; border-radius: 10px;margin-right: 50px;">
+          <img src="../../public/image/ia.png" alt="IA" style="max-width: 20%; margin: 0 30px;">
         </div>
       </div>
+      <FooterView></FooterView>
     </div>
-    <FooterView></FooterView>
   </div>
+  
 </template>
 
 <<<<<<< Updated upstream
