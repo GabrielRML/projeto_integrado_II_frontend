@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex h-100">
-<<<<<<< Updated upstream
+        
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-0 login-left">
             <div class="col-md-8 col-lg-8 col-xl-8">
                 <img src="../../public/image/logo-3.png"
@@ -34,7 +34,10 @@
                         <button type="button" @click="login" class="btn custom-button-primary">Entrar</button>
                         <!-- <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button> -->
                     </div>
-=======
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6 col-lg-6 col-xl-4 col-12 login-left">
             <div class="col-md-8 col-lg-8 col-xl-8 text-center">
                 <img src="../../public/image/logo-3.png" class="img-fluid larger-image" alt="Logo">
@@ -78,15 +81,11 @@
 <script>
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-import InputText from 'primevue/inputtext';
-import FloatLabel from 'primevue/floatlabel';
-import Password from 'primevue/password';
 
 import http from '@/services/http.js';
 import { useAuthStore } from '../stores/auth.js';
 
 export default {
-  components: { InputText, FloatLabel, Password },
   data: function () {
     return {
         user: {
