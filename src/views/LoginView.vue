@@ -32,7 +32,7 @@
             
                     <div class="d-flex justify-content-center text-center pt-2" style="margin-top: 2%; gap: 2%;">
                         <button type="button" @click="login" class="btn custom-button-primary">Entrar</button>
-                        <!-- <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button> -->
+                        <button type="button" class="btn custom-button-secundary" onclick="window.location.href='/cadastro'">Cadastrar</button>
                     </div>
                 </div>
             </div>

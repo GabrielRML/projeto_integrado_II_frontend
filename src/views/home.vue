@@ -1,35 +1,6 @@
 <template>
-<<<<<<< Updated upstream
-  <div>
-    <nav>
-      <div class="navbar navbar-expand-lg " style="height: 120px; background: white;">
-        <div to="/" class="navbar-brand" style="margin-left: 100px;">
-          <img src="../../public/image/logo-3.png" class="logo larger-image" alt="logo" style="margin-left: 0px; margin-top: 135px; width: 270px;">
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            
-          </ul>
-
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button type="button"  to="/login" class="btn btn-light mx-2" onclick="window.location.href='/login'" style="width: 100px;font-size: 23px;background-color: #d3d3d3;">Login</button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="btn mx-5" onclick="window.location.href='/cadastro'" style="background-color: #48A3BF; color: white; font-size: 23px;">Cadastro</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-=======
   <div style="overflow-y: auto; max-height: 100vh;">
     <navBarView></navBarView>
->>>>>>> Stashed changes
     <div class="pagina-white">
       <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
         <div style="max-width: 40%;">
@@ -121,8 +92,7 @@
   
 </template>
 
-<<<<<<< Updated upstream
-=======
+
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import navBarView from '../components/navBarView.vue';
