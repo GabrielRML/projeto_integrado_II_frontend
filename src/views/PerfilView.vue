@@ -189,45 +189,65 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-
-// import axios from 'axios';
+import { RouterLink, RouterView } from 'vue-router';
+import axios from 'axios'; // Importa o Axios
 import navBarView from '../components/navBarView.vue';
 
 export default {
   components: {
-    RouterLink, RouterView, navBarView
+    RouterLink, RouterView, navBarView,
   },
   data: function () {
     return {
-        edit: 0,
-        profile: {
-                name: '',
-                email: '',
-                address: '',
-                hobbies: '',
-                job: '',
-                skill: ''
-            }
-    }
-  },
-  computed: {
+      edit: 0,
+      profile: {
+        name: '',
+        email: '',
+        address: '',
+        hobbies: '',
+        job: '',
+        skill: '',
+      },
+      id: '122f8a5d-aa7c-11ef-8231-f4b52057622d',
+      usuario: [],
+    };
   },
   methods: {
+    async buscaUsuarioPorId() {
+      axios.get(`http://localhost:8080/api/usuario/${this.id}`)
+        .then(response => {
+            axios.get(`http://localhost:8080/api/usuario/${this.id}`)
+              .then(response => {
+                console.log(response)
+              })
+              .catch(error => {
+                console.error('Erro ao buscar usuário:', error);
+              });
+          console.log(response);return;
+          this.usuario = response.data;
+          console.log('Usuário encontrado:', this.usuario);
+        })
+        .catch(error => {
+          console.error('Erro ao buscar usuário:', error);
+        });
+},
+
     editProfile() {
       this.edit = this.edit === 0 ? 1 : 0;
-      console.log(this.edit)
+      console.log(this.edit);
     },
-    SalvarEdit(){
+    SalvarEdit() {
       this.edit = this.edit === 1 ? 0 : 1;
-    }
+    },
   },
   mounted: function () {
     const profileData = JSON.parse(localStorage.getItem('profile')) || {};
-        this.profile = { ...this.profile, ...profileData };
+    this.profile = { ...this.profile, ...profileData };
+    this.buscaUsuarioPorId();
   },
-}
+};
 </script>
+
 <style>
 body{
     margin-top:20px;
