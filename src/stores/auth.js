@@ -4,16 +4,15 @@ import http from '@/services/http.js';
 
 export const useAuthStore = defineStore('auth', () => {
     const token = ref(localStorage.getItem('token'));
-    const user = ref(JSON.parse(localStorage.getItem('user')));
-
-    function setUser(newUser) {
-        localStorage.setItem('user', JSON.stringify(newUser));
-        user.value = newUser;
+    const user = ref(null);
+    
+    function setToken(tokenValue) {
+        localStorage.setItem('token', tokenValue);
+        token.value = tokenValue;
     }
 
-    function setToken(tokenValue) {
-        localStorage.setItem('token', token.value);
-        token.value = tokenValue;
+    function setUser(userValue) {
+        user.value = userValue;
     }
 
     async function checkToken() {
@@ -24,9 +23,11 @@ export const useAuthStore = defineStore('auth', () => {
                     'Authorization': tokenAuth
                 }
             });
+            setUser(data.user);
             return data;
         } catch (error) {
             console.error(error);
+            logout();
         }
     }
 
@@ -37,20 +38,16 @@ export const useAuthStore = defineStore('auth', () => {
     function logout() {
         localStorage.removeItem('token');
         token.value = null;
-    }
-
-    async function verifyRoleUser(role) {
-        const { data } = await http.post('/verifyRoleUser', role);
-        return data;
+        user.value = null;
     }
 
     return {
         token,
+        user,
         setToken,
         setUser,
         checkToken,
         isAuthenticated,
         logout,
-        verifyRoleUser
     };
 });

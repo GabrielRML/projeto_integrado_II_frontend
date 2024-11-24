@@ -73,6 +73,7 @@
 
 <script>
 import { Genero } from '@/enums/genero';
+import axios from 'axios';
 
 export default {
     data() {

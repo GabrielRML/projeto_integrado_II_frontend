@@ -1,6 +1,4 @@
 <template>
-<<<<<<< Updated upstream
-  <div>
     <nav>
       <div class="navbar navbar-expand-lg " style="height: 120px; background: white;">
         <div to="/" class="navbar-brand" style="margin-left: 100px;">
@@ -26,10 +24,8 @@
       </div>
     </nav>
 
-=======
   <div style="overflow-y: auto; max-height: 100vh;">
     <navBarView></navBarView>
->>>>>>> Stashed changes
     <div class="pagina-white">
       <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
         <div style="max-width: 40%;">
@@ -121,8 +117,6 @@
   
 </template>
 
-<<<<<<< Updated upstream
-=======
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import navBarView from '../components/navBarView.vue';
@@ -146,7 +140,6 @@ export default {
 
 
 
->>>>>>> Stashed changes
 <style scoped>
 .navbar {
   color: rgba(72, 163, 191, 0.481);

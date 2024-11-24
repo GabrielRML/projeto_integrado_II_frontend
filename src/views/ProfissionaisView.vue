@@ -16,37 +16,20 @@
             <div class="col-md-3 col-lg-3 col-xl-3 col-12" style="padding-top: 1.7rem;">
                 <FloatLabel>
                     <MultiSelect
-                        id="motivo"
-                        v-model="motivosSelecionados"
-                        :options="listMotivos"
+                        id="servicos"
+                        :style="{ width: '100%' }"
+                        :options="servicos"
                         optionLabel="nome"
                         optionValue="id"
-                        :maxSelectedLabels="2"
-                        :style="{ width: '100%' }"
                     />
-                    <label for="motivo">Motivo</label>
-                </FloatLabel>
-            </div>
-    
-            <div class="col-md-3 col-lg-3 col-xl-3 col-12" style="padding-top: 1.7rem;">
-                <FloatLabel>
-                    <MultiSelect
-                        id="especialidade"
-                        v-model="especialidadeSelecionada"
-                        :options="especialidades"
-                        optionLabel="nome"
-                        optionValue="id"
-                        :maxSelectedLabels="2"
-                        :style="{ width: '100%' }"
-                    />
-                    <label for="especialidade">Especialidades</label>
+                    <label for="especialidade">Serviços</label>
                 </FloatLabel>
             </div>
         </div>
     </div>
 
     <div class="d-flex flex-column align-items-center" style="margin-top: 1rem;">
-        <div class="row container-card col-md-8 col-lg-8 col-xl-8 col-11" style="background-color: black; border-radius: 10px;">
+        <div class="row container-card col-md-8 col-lg-8 col-xl-8 col-11" style="background-color: black;">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12 container-info-prestador">
                 <div class="d-flex align-items-center">
                     <img src="../assets/avatar.png" alt="Foto de Perfil" width="100px">
@@ -98,10 +81,7 @@ export default {
     data() {
         return {
             search: '',
-            especialidades: [],
-            especialidadeSelecionada: null,
-            motivosSelecionados: [],
-            listMotivos: [],
+            servicos: [],
             agendamento: {
                 id: null,
                 data: null,
@@ -113,10 +93,10 @@ export default {
         }
     },
     methods: {
-        getEspecialidades() {
-            http.get('/especialidades')
+        getServicos() {
+            http.get('/servicos')
                 .then(response => {
-                    this.especialidades = response.data;
+                    this.servicos = response.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -124,7 +104,7 @@ export default {
         }
     },
     mounted() {
-        this.getEspecialidades();
+        this.getServicos();
     }
 }
 </script>
@@ -144,7 +124,6 @@ export default {
 
 .container-info-prestador {
     background-color: white;
-    border-radius: 10px;
 }
 
 .username {
