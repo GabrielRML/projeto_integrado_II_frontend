@@ -19,7 +19,6 @@
     </div>
   </div>
 
-  <!-- Modal com Consultas e Avaliações -->
   <Dialog 
     v-if="alunoSelecionado"
     :header="'Resumo de ' + (alunoSelecionado?.nomeCompleto || '')" 
@@ -35,14 +34,12 @@
       <p><strong>Email:</strong> {{ alunoSelecionado.email }}</p>
       <p><strong>Gênero:</strong> {{ alunoSelecionado.genero }}</p>
       
-      <!-- Exibir todas as consultas -->
       <h4>Consultas:</h4>
       <ul>
         <li v-for="consulta in consultas" :key="consulta.id">
           <h6>Consulta:</h6>
           <p>{{ formatarData(consulta.dataConsulta) }} - {{ consulta.obsConsulta }}</p>
           
-          <!-- Exibir avaliações para cada consulta -->
           <h6>Avaliações:</h6>
           <ul>
             <li v-for="avaliacao in avaliacoes" :key="avaliacao.id">
@@ -78,15 +75,14 @@ export default {
   },
   data() {
     return {
-      alunos: [], // Lista de alunos
-      consultas: [], // Lista de consultas
-      avaliacoes: [], // Lista de avaliações
-      alunoSelecionado: null, // Aluno selecionado para exibir detalhes
-      modalVisivel: false, // Controle de visibilidade do modal
+      alunos: [], 
+      consultas: [], 
+      avaliacoes: [], 
+      alunoSelecionado: null, 
+      modalVisivel: false, 
     };
   },
   mounted() {
-    // Carregar alunos
     axios.get('http://localhost:8080/api/usuario')
       .then(response => {
         this.alunos = response.data.map(usuario => ({
@@ -97,7 +93,6 @@ export default {
       })
       .catch(error => console.error("Erro ao buscar usuários:", error));
 
-    // Carregar consultas
     axios.get('http://localhost:8080/api/consulta')
       .then(response => {
         this.consultas = response.data.map(consulta => ({
@@ -109,7 +104,6 @@ export default {
       })
       .catch(error => console.error("Erro ao buscar consultas:", error));
 
-    // Carregar avaliações
     axios.get('http://localhost:8080/api/avaliacao')
       .then(response => {
         this.avaliacoes = response.data.map(avaliacao => ({
@@ -123,12 +117,12 @@ export default {
   },
   methods: {
     abrirModal(aluno) {
-      this.alunoSelecionado = aluno; // Seleciona o aluno para o modal
-      this.modalVisivel = true; // Torna o modal visível
+      this.alunoSelecionado = aluno; 
+      this.modalVisivel = true; 
     },
     fecharModal() {
-      this.modalVisivel = false; // Fecha o modal
-      this.alunoSelecionado = null; // Limpa o aluno selecionado
+      this.modalVisivel = false; 
+      this.alunoSelecionado = null; 
     },
     formatarData(data) {
       const date = new Date(data);
@@ -143,23 +137,22 @@ export default {
 </script>
 
 <style scoped>
-/* Estilo para a grid dos cards */
 .container .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards por linha */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
   padding-top: 30px;
 }
 
 @media (max-width: 1024px) {
   .container .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards por linha em telas menores */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 600px) {
   .container .grid {
-    grid-template-columns: 1fr; /* 1 card por linha em telas muito pequenas */
+    grid-template-columns: 1fr; 
   }
 }
 </style>
