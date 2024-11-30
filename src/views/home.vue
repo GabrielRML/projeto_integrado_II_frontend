@@ -86,7 +86,6 @@
           <img src="../../public/image/ia.png" alt="IA" style="max-width: 20%; margin: 0 30px;">
         </div>
       </div>
-      <FooterView></FooterView>
     </div>
   </div>
   
@@ -96,14 +95,12 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import navBarView from '../components/navBarView.vue';
-import FooterView from '../components/FooterView.vue';
 
 export default {
   components: {
     RouterLink,
     RouterView,
-    navBarView,
-    FooterView
+    navBarView
   },
   data: function () {
     return {};
