@@ -37,6 +37,11 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+        
+>>>>>>> e694ba2cb744b5575fe5370bd1eeb93d2672ebd9
     </div>
 </template>
 
@@ -67,6 +72,7 @@ export default {
             this.auth.setToken(data.access_token);
             const user = await http.get('/usuario', { headers: { Authorization: `Bearer ${this.auth.token}` } });
             this.auth.setUser(user.data);
+            window.location.href = '/home';
         } catch (error) {
             Swal.fire({
                 position: "top",

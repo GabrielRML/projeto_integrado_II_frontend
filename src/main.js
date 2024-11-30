@@ -8,6 +8,8 @@ import router from './router';
 import Swal from 'sweetalert2';  
 import 'sweetalert2/src/sweetalert2.scss';
 
+import "leaflet/dist/leaflet.css";  // Certifique-se de que o CSS do Leaflet está sendo importado corretamente
+ 
 /* Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
