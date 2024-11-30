@@ -133,8 +133,8 @@
             ></l-tile-layer>
           </l-map>
           <div style="" class="col-6 mt-4 d-flex justify-content-center">
-            <l-marker :lat-lng="filtrarEstado">
-              <l-tooltip>{{this.teste}}</l-tooltip>
+            <l-marker :lat-lng="[profile.localTrabalhoLat, profile.localTrabalhoLong]">
+              <l-tooltip>teste</l-tooltip>
             </l-marker>
           </div>
         </div>
@@ -246,6 +246,11 @@
                     Salvar Perfil
                     <font-awesome-icon :icon="['fas', 'save']" class="me-2" />
                   </button>
+                  <div class="col-md-1"></div>
+                  <button class="btn btn-info" @click="edit = 0">
+                    Cancelar
+                    <font-awesome-icon :icon="['fas', 'save']" class="me-2" />
+                  </button>                  
                 </div>
               </div>
             </div>
@@ -253,6 +258,23 @@
         </div>
       </div>
       </div>
+            <!--Mapa leaflet-->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-5 h100 w-100" style="margin-left:80px; height:600px; width:500px;">
+                <l-map ref="map" v-model:zoom="zoom" :center="filtrarEstado">
+                  <l-tile-layer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    layer-type="base"
+                    name="OpenStreetMap"
+                  ></l-tile-layer>
+                </l-map>
+                <div style="" class="col-6 mt-4 d-flex justify-content-center">
+                  <l-marker :lat-lng="[profile.localTrabalhoLat, profile.localTrabalhoLong]">
+                    <l-tooltip>teste</l-tooltip>
+                  </l-marker>
+                </div>
+              </div>
+            </div>
     </div>
     
 </template>
@@ -261,19 +283,22 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import axios from 'axios';
+import { useAuthStore } from '@/stores/auth';  
+import http from '@/services/http.js';
 import navBarView from '../components/navBarView.vue';
-//Importando VUE LEAFLET
+// Importando VUE LEAFLET
 import "leaflet/dist/leaflet.css";
-import { LMap, LTileLayer} from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
 
 export default {
   components: {
-    RouterLink, RouterView, LMap, LTileLayer
+    RouterLink, RouterView, LMap, LTileLayer, navBarView, 
   },
   data: function () {
     return {
       edit: 0,
       filtrarEstado: [-23.5505, -46.6333],
+      teste: [-23.5505, -46.6333],
       zoom: 18,
       profile: {
         nomeCompleto: null,
@@ -288,55 +313,88 @@ export default {
         registroProfissional: null,
         telefone: null
       },
-      id: '122fa850-aa7c-11ef-8231-f4b52057622d',
-      idDetalhes:'1a2b3c4d-1111-2222-3333-444444444444',
-      tipoUsuario:null,
+      idDetalhe: null,
+      user: {
+        userId: null,
+        username: null
+      },
+      tipoUsuario: null,
       usuario: [],
     };
   },
+  computed: {
+
+    // Usando a store de autenticação para pegar o usuário
+    authStore() {
+      return useAuthStore();
+    },
+    // Acessando o usuário diretamente da store
+    usuarioLogado() {
+      return this.authStore.user;  // Pegando os dados do usuário da store
+    }
+  },
   methods: {
     async buscaUsuarioPorId() {
-    axios.get(`http://localhost:8080/api/usuario/${this.id}`)
-      .then(response => {
-          this.tipoUsuario = response.data.tipoUsuario
-          this.usuario = response.data;
-          this.profile.nomeCompleto = `${this.usuario.nome} ${this.usuario.sobrenome}`;
-          this.profile.email = this.usuario.email;
-          this.profile.cpf = this.usuario.cpf;
-          this.profile.genero = this.usuario.genero;
-          this.profile.dataNascimento = this.usuario.dataNascimento;
-        axios.get(`http://localhost:8080/api/detalhes-profissionais/${this.idDetalhes}`)
+      http.get(`/usuario/${this.user.userId}`)
+        .then(response => {
+          this.profile = response.data
+          this.profile.nomeCompleto = response.data.nome + ' ' + response.data.sobrenome
+          http.get(`/detalhes-profissionais/detalhesusuario/${this.user.userId}`)
           .then(response => {
-            this.profile.descricao = response.data.descricao;
-            this.profile.localTrabalho = response.data.localTrabalho;
-            this.profile.localTrabalhoLat = response.data.localTrabalhoLat;
-            this.profile.localTrabalhoLong = response.data.localTrabalhoLong;
-            this.profile.registroProfissional = response.data.registroProfissional;
-            this.profile.telefone = response.data.telefone;
+              this.idDetalhe = response.data[0].id
+              this.profile.descricao = response.data[0].descricao;
+              this.profile.localTrabalho = response.data[0].localTrabalho;
+              this.profile.localTrabalhoLat = response.data[0].localTrabalhoLat;
+              this.profile.localTrabalhoLong = response.data[0].localTrabalhoLong;
+              this.profile.registroProfissional = response.data[0].registroProfissional;
+              this.profile.telefone = response.data[0].telefone;
           })
           .catch(error => {
-            console.error('Erro ao buscar usuário:', error);
+              console.error('Erro ao buscar detalhes do profissional:', error);
           });
-
-      })
-      .catch(error => {
-        console.error('Erro ao buscar usuário:', error);
-      });
-},
-
-
+        })
+        .catch(error => {
+          console.error('Erro ao buscar usuário:', error);
+        });
+    },
     editProfile() {
       this.edit = this.edit === 0 ? 1 : 0;
       console.log(this.edit);
     },
     SalvarEdit() {
-      console.log("aqui")
+      http.patch(`/detalhes-profissionais/${this.idDetalhe}`, {
+          descricao: this.profile.descricao,
+          localTrabalho: this.profile.localTrabalho,
+          localTrabalhoLat: this.profile.localTrabalhoLat,
+          localTrabalhoLong: this.profile.localTrabalhoLong,
+          telefone: this.profile.telefone,
+          registroProfissional: this.profile.registroProfissional
+      })
+      .then(response => {
+        console.log(response); 
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: `Detalhes atualizados com sucesso`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+      })
+      .catch(error => {
+          Swal.fire({
+            position: "top",
+            icon: "warning",
+            title: `Erro ao atualizar detalhes do profissional`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+      });
       this.edit = this.edit === 1 ? 0 : 1;
     },
   },
   mounted: function () {
-    const profileData = JSON.parse(localStorage.getItem('profile')) || {};
-    this.profile = { ...this.profile, ...profileData };
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    this.user = user
     this.buscaUsuarioPorId();
   },
 };
