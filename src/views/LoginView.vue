@@ -37,11 +37,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
-
-        
->>>>>>> e694ba2cb744b5575fe5370bd1eeb93d2672ebd9
     </div>
 </template>
 

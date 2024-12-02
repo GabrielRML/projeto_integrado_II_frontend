@@ -1,5 +1,5 @@
 import "primevue/resources/themes/aura-light-blue/theme.css";
-import "primevue/resources/primevue.min.css"; /* Deprecated */
+import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
 
 import ptBr from './primelocale/pt-br.json' 
@@ -17,6 +17,14 @@ import SelectButton from 'primevue/selectbutton';
 import Stepper from 'primevue/stepper';
 import StepperPanel from 'primevue/stepperpanel';
 import Textarea from "primevue/textarea";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import Menu from 'primevue/menu';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+import Card from 'primevue/card';
+import InputIcon from "primevue/inputicon";
+import MultiSelect from 'primevue/multiselect';
 
 export default (app) => {
   app.use(PrimeVue, {
@@ -35,4 +43,12 @@ export default (app) => {
   app.component('Stepper', Stepper);
   app.component('StepperPanel', StepperPanel);
   app.component('Textarea', Textarea);
+  app.component('DataTable', DataTable);
+  app.component('Column', Column);
+  app.component('Menu', Menu);
+  app.component('TabView', TabView);
+  app.component('TabPanel', TabPanel);
+  app.component('Card', Card);
+  app.component('InputIcon', InputIcon);
+  app.component('MultiSelect', MultiSelect);
 };

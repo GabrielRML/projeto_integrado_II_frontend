@@ -6,7 +6,7 @@ import LoginView from '@/views/LoginView.vue'
 import AgendamentoView from '@/views/AgendamentoView.vue';
 import TelaDeAvaliacaoView from '@/views/TelaDeAvaliacaoView.vue';
 import SupervisorView from '@/views/SupervisorView.vue';
-import PerfilView from '@/views/PerfilView.vue';
+import ConfiguracoesView from '@/views/ConfiguracoesView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,10 +42,10 @@ const router = createRouter({
       component: SupervisorView
     },
     {
-      path: '/perfil',
-      name: 'perfil',
-      component: PerfilView
-    }
+      path: '/configuracoes',
+      name: 'Configurações',
+      component: ConfiguracoesView
+    },
   ]
 })
 
