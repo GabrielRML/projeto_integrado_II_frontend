@@ -65,9 +65,7 @@ export default {
         try {
             const { data } = await http.post('/authenticate', this.user);
             this.auth.setToken(data.access_token);
-            const user = await http.get('/usuario', { headers: { Authorization: `Bearer ${this.auth.token}` } });
-            this.auth.setUser(user.data);
-            window.location.href = '/home';
+            await http.get('/usuario', { headers: { Authorization: `Bearer ${this.auth.token}` } });
         } catch (error) {
             Swal.fire({
                 position: "top",

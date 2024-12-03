@@ -25,6 +25,7 @@ import TabPanel from 'primevue/tabpanel';
 import Card from 'primevue/card';
 import InputIcon from "primevue/inputicon";
 import MultiSelect from 'primevue/multiselect';
+import Dialog from "primevue/dialog";
 
 export default (app) => {
   app.use(PrimeVue, {
@@ -51,4 +52,5 @@ export default (app) => {
   app.component('Card', Card);
   app.component('InputIcon', InputIcon);
   app.component('MultiSelect', MultiSelect);
+  app.component('Dialog', Dialog);
 };
