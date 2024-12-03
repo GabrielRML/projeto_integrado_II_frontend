@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth.js';
 import CadastroView from '@/views/CadastroView.vue';
-import Home from '../views/home.vue'
-import LoginView from '@/views/LoginView.vue'
+import Home from '../views/Home.vue';
+import LoginView from '@/views/LoginView.vue';
 import AgendamentoView from '@/views/AgendamentoView.vue';
 import TelaDeAvaliacaoView from '@/views/TelaDeAvaliacaoView.vue';
 import SupervisorView from '@/views/SupervisorView.vue';
@@ -12,69 +12,69 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/home',
-      name: 'Pagina Inicial',
-      component: Home
-    },
-    {
       path: '/',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+    },
+    {
+      path: '/home',
+      name: 'Pagina Inicial',
+      component: Home,
+      meta: { auth: true },
     },
     {
       path: '/cadastro',
       name: 'cadastro',
-      component: CadastroView
+      component: CadastroView,
+      meta: { auth: true },
     },
     {
       path: '/agendamento',
       name: 'agendamento',
-      component: AgendamentoView
+      component: AgendamentoView,
+      meta: { auth: true },
     },
     {
       path: '/avaliacao',
       name: 'avaliacao',
-      component: TelaDeAvaliacaoView
+      component: TelaDeAvaliacaoView,
+      meta: { auth: true },
     },
     {
       path: '/supervisor',
       name: 'supervisor',
-      component: SupervisorView
+      component: SupervisorView,
+      meta: { auth: true },
     },
     {
       path: '/configuracoes',
       name: 'Configurações',
-      component: ConfiguracoesView
+      component: ConfiguracoesView,
+      meta: { auth: true },
     },
-  ]
-})
+  ],
+});
 
 router.beforeEach(async (to, from, next) => {
-  if(!to.meta.auth) {
-    next();
-  } else {
-    next({ name: 'login'});
-  }
-
   const auth = useAuthStore();
-  if(to.meta.auth && auth.token) {
-    const isAuthenticated = await auth.checkToken();
-    if(!isAuthenticated) {
-      next({ name: 'login'});
+
+  if (to.meta.auth) {
+    if (!auth.token) {
+      return next({ name: 'login' });
     }
-    next();
-  } else {
-    next({ name: 'login'});
+
+    const isAuthenticated = localStorage.getItem('token');
+    if (!isAuthenticated) {
+      auth.logout();
+      return next({ name: 'login' });
+    }
+
+    if (to.meta.role && auth.user.role !== to.meta.role) {
+      return next({ name: 'Pagina Inicial' });
+    }
   }
-  next({ name: 'login'});
-  // Caso a rota tenha role para acesso
-  // if(to.meta.role) {
-  //   const { data } = await h
-  //   if(auth.user.role !== role) {
-  //     next();
-  //   }
-  // }
 
-})
+  next();
+});
 
-export default router
+export default router;

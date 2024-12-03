@@ -1,6 +1,6 @@
 <template>
   <div style="overflow-y: auto; max-height: 100vh;">
-    <navBarView></navBarView>
+    <NavBarComponent></NavBarComponent>
     <div class="pagina-white">
       <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px 100px 0 140px;margin-right: 10px;">
         <div style="max-width: 40%;">
@@ -94,13 +94,13 @@
 
 <script>
 import { RouterLink, RouterView } from 'vue-router';
-import navBarView from '../components/navBarView.vue';
+import NavBarComponent from '../components/NavBarComponent.vue';
 
 export default {
   components: {
     RouterLink,
     RouterView,
-    navBarView
+    NavBarComponent
   },
   data: function () {
     return {};

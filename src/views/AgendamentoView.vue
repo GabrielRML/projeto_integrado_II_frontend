@@ -1,5 +1,5 @@
 <template>
-    <navBarView></navBarView>
+    <NavBarComponent></NavBarComponent>
     <div class="d-flex flex-column align-items-center" style="margin-top: 1rem;">
         <div v-for="profissional in profissionais" :key="profissional.id"
             class="row container-card col-md-8 col-lg-8 col-xl-8 col-11 mb-4">
@@ -45,13 +45,13 @@
 </template>
 
 <script>
-import navBarView from '@/components/navBarView.vue';
+import NavBarComponent from '@/components/NavBarComponent.vue';
 import AgendaComponent from '@/components/AgendaComponent.vue';
 import axiosInstance from '@/services/http';
 
 export default {
     components: {
-        navBarView,
+        NavBarComponent,
         AgendaComponent,
     },
     data() {

@@ -186,7 +186,7 @@
 import { RouterLink, RouterView } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';  
 import http from '@/services/http.js';
-import navBarView from '../components/navBarView.vue';
+import navBarView from './NavBarComponent.vue';
 
 // Importando VUE LEAFLET
 import "leaflet/dist/leaflet.css";

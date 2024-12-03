@@ -1,5 +1,5 @@
 <template>
-    <navBarView></navBarView>
+    <NavBarComponent></NavBarComponent>
     <div class="container">
         <div class="card">
             <div class="d-flex align-items-center gap-4" style="padding: 2rem 1rem;">
@@ -36,12 +36,12 @@
 import ConfigAgendaComponent from '@/components/ConfigAgendaComponent.vue';
 import PerfilComponent from '@/components/PerfilComponent.vue';
 import MapaComponent from '@/components/MapaComponent.vue'
-import navBarView from '@/components/navBarView.vue';
+import NavBarComponent from '@/components/NavBarComponent.vue';
 import http from '@/services/http.js';
 
 export default {
     components: {
-        ConfigAgendaComponent, PerfilComponent, MapaComponent, navBarView
+        ConfigAgendaComponent, PerfilComponent, MapaComponent, NavBarComponent
     },
     data() {
         return {

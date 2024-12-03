@@ -1,8 +1,11 @@
 <template>
-  <navBarView></navBarView>
+  <NavBarComponent></NavBarComponent>
   <h1 class="text-alunos text-lg-center" style="margin: 1px; color: black;">Estagiários</h1>
 
-  <div class="container">
+
+  <Message v-if="alunos.length == 0" :closable="false" severity="warn" style="width: 1000px; margin: 0 auto;">Nenhum estagiário encontrado</Message>
+
+  <div v-else class="container">
     <div class="grid">
       <div class="col-12 md:col-4 lg:col-3" v-for="aluno in alunos" :key="aluno.id">
         <Panel class="shadow-2 p-1">
@@ -58,16 +61,16 @@
 </template>
 
 <script>
-import navBarView from '../components/navBarView.vue';
 import Panel from 'primevue/panel';
 import Button from 'primevue/button';
 import Dialog from 'primevue/dialog';
 import Rating from 'primevue/rating';
 import axios from 'axios';
+import NavBarComponent from '../components/NavBarComponent.vue';
 
 export default {
   components: {
-    navBarView,
+    NavBarComponent,
     Panel,
     Button,
     Dialog,

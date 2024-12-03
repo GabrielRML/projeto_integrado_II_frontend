@@ -26,6 +26,9 @@ import Card from 'primevue/card';
 import InputIcon from "primevue/inputicon";
 import MultiSelect from 'primevue/multiselect';
 import Dialog from "primevue/dialog";
+import Message from "primevue/message";
+import Rating from "primevue/rating";
+import Divider from "primevue/divider";
 
 export default (app) => {
   app.use(PrimeVue, {
@@ -53,4 +56,7 @@ export default (app) => {
   app.component('InputIcon', InputIcon);
   app.component('MultiSelect', MultiSelect);
   app.component('Dialog', Dialog);
+  app.component('Message', Message);
+  app.component('Rating', Rating);
+  app.component('Divider', Divider);
 };
