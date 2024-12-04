@@ -7,6 +7,9 @@ import AgendamentoView from '@/views/AgendamentoView.vue';
 import TelaDeAvaliacaoView from '@/views/TelaDeAvaliacaoView.vue';
 import SupervisorView from '@/views/SupervisorView.vue';
 import ConfiguracoesView from '@/views/ConfiguracoesView.vue';
+import ConsultasView from '@/views/ConsultasView.vue';
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +54,11 @@ const router = createRouter({
       name: 'Configurações',
       component: ConfiguracoesView,
       meta: { auth: true },
+    },
+    {
+      path: '/consultas',
+      name: 'consultas',
+      component: ConsultasView
     },
   ],
 });
