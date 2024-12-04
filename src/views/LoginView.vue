@@ -40,48 +40,44 @@
     </div>
 </template>
 
-
 <script>
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-
-import http from '@/services/http.js';
 import { useAuthStore } from '../stores/auth.js';
+import { useRouter } from 'vue-router';
 
 export default {
-  data: function () {
+  data() {
     return {
-        user: {
-            email: '',
-            password: ''
-        },
-        auth: useAuthStore()
-    }
+      user: {
+        email: '',
+        password: ''
+      },
+    };
   },
-  computed: {
+  setup() {
+    const router = useRouter();
+    const authStore = useAuthStore();
+    return { router, authStore };
   },
   methods: {
-    async login(){
-        try {
-            const { data } = await http.post('/authenticate', this.user);
-            this.auth.setToken(data.access_token);
-            const user = await http.get('/usuario', { headers: { Authorization: `Bearer ${this.auth.token}` } });
-            this.auth.setUser(user.data);
-            window.location.href = '/home';
-        } catch (error) {
-            Swal.fire({
-                position: "top",
-                icon: "error",
-                title: error.response.data.detail,
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
+    async login() {
+      try {
+        await this.authStore.login(this.user);
+        this.router.push({ name: 'Pagina Inicial' });
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          position: 'top',
+          icon: 'error',
+          title: 'Erro ao realizar login',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
     }
   },
-  mounted: function () {}
-}
-
+};
 </script>
 
 <style>

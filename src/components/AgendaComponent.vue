@@ -6,12 +6,23 @@
         </div>
 
         <div class="table-responsive">
-            <DataTable :value="agenda">
-                <Column v-for="(day, index) in agenda" :key="index" :header="formatDate(day.date)" :field="day.date">
+            <DataTable :value="agenda" class="p-datatable-striped">
+                <Column
+                    v-for="(day, index) in agenda"
+                    :key="index"
+                    :field="day.data"
+                >
+                    <template #header>
+                        <span v-html="formatDate(day.data)"></span>
+                    </template>
+
                     <template #body="slotProps">
                         <div v-for="hour in hours" :key="hour" class="hour-cell">
-                            <div class="hour-button p-1 rounded mb-1" style="cursor: pointer;"
-                                @click="toggleSelection(day.date, hour)">
+                            <div
+                                class="hour-button p-1 rounded mb-1"
+                                :class="{ 'selected-hour': isSelected(day.data, hour) }"
+                                @click="openDialog(day.data, hour)"
+                            >
                                 {{ hour }}
                             </div>
                         </div>
@@ -19,23 +30,57 @@
                 </Column>
             </DataTable>
         </div>
+
+        <Dialog 
+            v-model:visible="dialogVisible" 
+            :style="{ width: '400px' }" 
+            modal 
+            closable 
+            dismissableMask 
+            header="Detalhes do Horário"
+        >
+            <div class="p-3">
+                <p><strong>Data:</strong> {{ selectedDate }}</p>
+                <p><strong>Horário:</strong> {{ selectedHour }}</p>
+                <p>Confirme sua consulta para este horário.</p>
+                <div class="d-flex justify-content-end">
+                    <Button label="Cancelar" class="p-button-text" @click="dialogVisible = false" />
+                    <Button label="Confirmar" class="p-button-success ml-2" @click="confirmAppointment" />
+                </div>
+            </div>
+        </Dialog>
     </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 export default {
-    setup() {
-        const agenda = ref([
-            { date: "2024-10-13", selectedHours: [] },
-            { date: "2024-10-14", selectedHours: [] },
-            { date: "2024-10-15", selectedHours: [] },
-            { date: "2024-10-16", selectedHours: [] },
-        ]);
+    props: {
+        jsonData: {
+            type: Array,
+            required: true,
+        },
+        profissionalId: {
+            type: String,
+            required: true
+        }
+    },
+    setup(props) {
+        const agenda = computed(() =>
+            props.jsonData.map((item) => ({
+                data: item.data,
+                selectedHours: item.horas || [],
+            }))
+        );
+
         const hours = ref(
             Array.from({ length: 24 }, (_, index) => `${index.toString().padStart(2, "0")}:00`)
         );
+
+        const dialogVisible = ref(false);
+        const selectedDate = ref("");
+        const selectedHour = ref("");
 
         const formatDate = (dateString) => {
             const date = new Date(dateString);
@@ -45,19 +90,27 @@ export default {
             const weekday = new Intl.DateTimeFormat("pt-BR", optionsWeekday).format(date);
             const dayMonth = new Intl.DateTimeFormat("pt-BR", optionsDayMonth).format(date);
 
-            return `${weekday}<br>${dayMonth}`;
+            return `
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <span>${weekday}</span>
+                <span>${dayMonth}</span>
+            </div>`;
         };
 
-        const toggleSelection = (date, hour) => {
-            const day = agenda.value.find((d) => d.date === date);
-            if (day) {
-                const index = day.selectedHours.indexOf(hour);
-                if (index === -1) {
-                    day.selectedHours.push(hour);
-                } else {
-                    day.selectedHours.splice(index, 1);
-                }
-            }
+        const isSelected = (date, hour) => {
+            const day = agenda.value.find((d) => d.data === date);
+            return day && day.selectedHours.includes(hour);
+        };
+
+        const openDialog = (date, hour) => {
+            selectedDate.value = date;
+            selectedHour.value = hour;
+            dialogVisible.value = true;
+        };
+
+        const confirmAppointment = () => {
+            console.log(`Consulta confirmada para ${selectedDate.value} às ${selectedHour.value}`);
+            dialogVisible.value = false;
         };
 
         const prev = () => {
@@ -71,8 +124,13 @@ export default {
         return {
             agenda,
             hours,
+            dialogVisible,
+            selectedDate,
+            selectedHour,
             formatDate,
-            toggleSelection,
+            isSelected,
+            openDialog,
+            confirmAppointment,
             prev,
             next,
         };
@@ -90,10 +148,21 @@ export default {
     color: #3D75BB;
     font-weight: bold;
     text-align: center;
-    background-color: #63c9e079
+    background-color: #63c9e079;
 }
 
-.text-white {
+.hour-button.text-white {
+    background-color: #3D75BB;
     color: white !important;
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.p-datatable .p-column-header-content {
+    justify-content: center;
 }
 </style>

@@ -1,56 +1,34 @@
-import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import http from '@/services/http.js';
+import axiosInstance from '@/services/http';
 
-export const useAuthStore = defineStore('auth', () => {
-    const token = ref(localStorage.getItem('token'));
-    const user = ref(JSON.parse(localStorage.getItem('user')));
-
-    function setUser(newUser) {
-        localStorage.setItem('user', JSON.stringify(newUser));
-        user.value = newUser;
-    }
-
-    function setToken(tokenValue) {
-        localStorage.setItem('token', token.value);
-        token.value = tokenValue;
-    }
-
-    async function checkToken() {
-        try {
-            const tokenAuth = 'Bearer ' + token.value;
-            const { data } = await http.get('/authenticate', {
-                headers: {
-                    'Authorization': tokenAuth
-                }
-            });
-            return data;
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    function isAuthenticated() {
-        return token.value !== null;
-    }
-
-    function logout() {
-        localStorage.removeItem('token');
-        token.value = null;
-    }
-
-    async function verifyRoleUser(role) {
-        const { data } = await http.post('/verifyRoleUser', role);
-        return data;
-    }
-
-    return {
-        token,
-        setToken,
-        setUser,
-        checkToken,
-        isAuthenticated,
-        logout,
-        verifyRoleUser
-    };
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    token: localStorage.getItem('token') || null,
+    user: null,
+  }),
+  actions: {
+    async login(credentials) {
+      const { data } = await axiosInstance.post('/authenticate', credentials);
+      this.token = data.token;
+      this.user = data.user;
+      localStorage.setItem('token', data.token);
+    },
+    logout() {
+      this.token = null;
+      this.user = null;
+      localStorage.removeItem('token');
+    },
+    async checkToken() {
+      if (!this.token) return false;
+      try {
+        const { data } = await axiosInstance.get('/usuario', {
+          headers: { Authorization: `Bearer ${this.token}` },
+        });
+        this.user = data.user;
+        return true;
+      } catch {
+        return false;
+      }
+    },
+  },
 });

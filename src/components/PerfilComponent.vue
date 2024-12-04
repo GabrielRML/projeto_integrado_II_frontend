@@ -5,165 +5,98 @@
   <div class="container" v-if="edit === 0">
     <div class="main-body">
       <div class="row gutters-sm">
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                <div class="mt-3">
-                  <h4>{{ profile.nomeCompleto }}</h4>
-                  <p class="text-secondary mb-1">Desenvolvedor Full Stack</p>
-                  <p class="text-muted font-size-sm">{{ profile.localizacao || 'Tupã, SP' }}</p>
-                  <button class="btn btn-outline-primary">
-                    Instagram &nbsp;<font-awesome-icon :icon="['fab', 'instagram']" size="xl" />
-                  </button>
+
+
+        <div class="container d-flex align-items-center" >
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Nome Completo</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.nomeCompleto }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.email }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Telefone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.telefone || '(Não informado)' }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">CPF</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.cpf }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Endereço</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.endereco || 'Endereço não informado' }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Gênero</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.genero }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Registro Profissional</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ profile.registroProfissional || 'Não informado' }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-12 d-flex justify-content-center">
+                    <button class="btn btn-info d-flex align-items-center" @click="editProfile">
+                      Editar Perfil
+                      <font-awesome-icon :icon="['fas', 'pen-to-square']" class="me-2" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-8">
-          <div class="card mb-3">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Nome Completo</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.nomeCompleto }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Email</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.email }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Telefone</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.telefone || '(Não informado)' }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">CPF</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.cpf }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Endereço</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.endereco || 'Endereço não informado' }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Gênero</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.genero }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Local de Trabalho</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.localTrabalho || 'Não informado' }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Registro Profissional</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.registroProfissional || 'Não informado' }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Localização (Lat/Long)</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  {{ profile.localTrabalhoLat }}, {{ profile.localTrabalhoLong }}
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-12 d-flex justify-content-center">
-                  <button class="btn btn-info d-flex align-items-center" @click="editProfile">
-                    Editar Perfil
-                    <font-awesome-icon :icon="['fas', 'pen-to-square']" class="me-2" />
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    
-      <!--Mapa leaflet-->
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-5 h100 w-100" style="margin-left:80px; height:600px; width:500px;">
-          <l-map ref="map" v-model:zoom="zoom" :center="filtrarEstado">
-            <l-tile-layer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              layer-type="base"
-              name="OpenStreetMap"
-            ></l-tile-layer>
-          </l-map>
-          <div style="" class="col-6 mt-4 d-flex justify-content-center">
-            <l-marker :lat-lng="[profile.localTrabalhoLat, profile.localTrabalhoLong]">
-              <l-tooltip>teste</l-tooltip>
-            </l-marker>
-          </div>
-        </div>
-      </div>
-
-
+      
   </div>
 
   <!-- Perfil Editar -->
   <div class="container" v-if="edit === 1">
     <div class="main-body">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                <div class="mt-3">
-                  <h4>{{ profile.nomeCompleto }}</h4>
-                  <p class="text-secondary mb-1">Desenvolvedor Full Stack</p>
-                  <p class="text-muted font-size-sm">{{ profile.localizacao || 'Tupã, SP' }}</p>
-                  <button class="btn btn-outline-primary">
-                    Instagram &nbsp;<font-awesome-icon :icon="['fab', 'instagram']" size="xl" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="container d-flex align-items-center">
         <div class="col-lg-8">
           <div class="card">
             <div class="card-body">
@@ -217,27 +150,10 @@
               </div>
               <div class="row mb-3">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Local de Trabalho</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control" v-model="profile.localTrabalho">
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
                   <h6 class="mb-0">Registro Profissional</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" v-model="profile.registroProfissional">
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Localização (Lat/Long)</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control" v-model="profile.localTrabalhoLat" placeholder="Latitude">
-                  <input type="text" class="form-control" v-model="profile.localTrabalhoLong" placeholder="Longitude">
                 </div>
               </div>
               <div class="row">
@@ -257,24 +173,10 @@
           </div>
         </div>
       </div>
-      </div>
-            <!--Mapa leaflet-->
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-5 h100 w-100" style="margin-left:80px; height:600px; width:500px;">
-                <l-map ref="map" v-model:zoom="zoom" :center="filtrarEstado">
-                  <l-tile-layer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    layer-type="base"
-                    name="OpenStreetMap"
-                  ></l-tile-layer>
-                </l-map>
-                <div style="" class="col-6 mt-4 d-flex justify-content-center">
-                  <l-marker :lat-lng="[profile.localTrabalhoLat, profile.localTrabalhoLong]">
-                    <l-tooltip>teste</l-tooltip>
-                  </l-marker>
-                </div>
-              </div>
-            </div>
+
+    </div>
+
+
     </div>
     
 </template>
@@ -282,10 +184,10 @@
 
 <script>
 import { RouterLink, RouterView } from 'vue-router';
-import axios from 'axios';
 import { useAuthStore } from '@/stores/auth';  
 import http from '@/services/http.js';
-import navBarView from '../components/navBarView.vue';
+import navBarView from './NavBarComponent.vue';
+
 // Importando VUE LEAFLET
 import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
@@ -314,6 +216,8 @@ export default {
         telefone: null
       },
       idDetalhe: null,
+      getPrimeiroNome: null,
+      getSobrenome: null,
       user: {
         userId: null,
         username: null
@@ -323,35 +227,34 @@ export default {
     };
   },
   computed: {
-
-    // Usando a store de autenticação para pegar o usuário
     authStore() {
       return useAuthStore();
     },
-    // Acessando o usuário diretamente da store
     usuarioLogado() {
-      return this.authStore.user;  // Pegando os dados do usuário da store
+      return this.authStore.user;  
     }
   },
   methods: {
     async buscaUsuarioPorId() {
-      http.get(`/usuario/${this.user.userId}`)
+      http.get(`/detalhes-profissionais/detalhesusuario/${this.user.id}`)
         .then(response => {
-          this.profile = response.data
-          this.profile.nomeCompleto = response.data.nome + ' ' + response.data.sobrenome
-          http.get(`/detalhes-profissionais/detalhesusuario/${this.user.userId}`)
-          .then(response => {
-              this.idDetalhe = response.data[0].id
-              this.profile.descricao = response.data[0].descricao;
-              this.profile.localTrabalho = response.data[0].localTrabalho;
-              this.profile.localTrabalhoLat = response.data[0].localTrabalhoLat;
-              this.profile.localTrabalhoLong = response.data[0].localTrabalhoLong;
-              this.profile.registroProfissional = response.data[0].registroProfissional;
-              this.profile.telefone = response.data[0].telefone;
-          })
-          .catch(error => {
-              console.error('Erro ao buscar detalhes do profissional:', error);
-          });
+            const data = response.data[0]; 
+            const usuario = data.usuario;
+            this.idDetalhe = response.data[0].id
+
+            this.profile = {
+              nomeCompleto: `${usuario.nome} ${usuario.sobrenome}`,
+              email: usuario.email,
+              telefone: data.telefone || '(Não informado)',
+              cpf: usuario.cpf,
+              endereco: usuario.endereco || 'Endereço não informado',
+              genero: usuario.genero || 'Não informado',
+              localTrabalho: data.localTrabalho || 'Não informado',
+              localTrabalhoLat: data.localTrabalhoLat || 'Não informado',
+              localTrabalhoLong: data.localTrabalhoLong || 'Não informado',
+              registroProfissional: data.registroProfissional || 'Não informado',
+              descricao: data.descricao || 'Não informado'
+            };
         })
         .catch(error => {
           console.error('Erro ao buscar usuário:', error);
@@ -364,31 +267,53 @@ export default {
     SalvarEdit() {
       http.patch(`/detalhes-profissionais/${this.idDetalhe}`, {
           descricao: this.profile.descricao,
-          localTrabalho: this.profile.localTrabalho,
-          localTrabalhoLat: this.profile.localTrabalhoLat,
-          localTrabalhoLong: this.profile.localTrabalhoLong,
           telefone: this.profile.telefone,
           registroProfissional: this.profile.registroProfissional
       })
       .then(response => {
-        console.log(response); 
-        Swal.fire({
-            position: "top",
-            icon: "success",
-            title: `Detalhes atualizados com sucesso`,
-            showConfirmButton: false,
-            timer: 1500
-        });
+          Swal.fire({
+              position: "top",
+              icon: "success",
+              title: `Detalhes atualizados com sucesso`,
+              showConfirmButton: false,
+              timer: 1500
+          });
       })
       .catch(error => {
           Swal.fire({
-            position: "top",
-            icon: "warning",
-            title: `Erro ao atualizar detalhes do profissional`,
-            showConfirmButton: false,
-            timer: 1500
-        });
+              position: "top",
+              icon: "warning",
+              title: `Erro ao atualizar detalhes do profissional`,
+              showConfirmButton: false,
+              timer: 1500
+          });
       });
+
+      http.patch(`/usuario/${this.user.id}`, {
+          cpf: this.profile.cpf,
+          email: this.profile.email,
+          genero: this.profile.genero
+      })
+      .then(response => {
+          Swal.fire({
+              position: "top",
+              icon: "success",
+              title: `Detalhes atualizados com sucesso`,
+              showConfirmButton: false,
+              timer: 1500
+          });
+      })
+      .catch(error => {
+          Swal.fire({
+              position: "top",
+              icon: "warning",
+              title: `Erro ao atualizar detalhes do profissional`,
+              showConfirmButton: false,
+              timer: 1500
+          });
+      });
+
+
       this.edit = this.edit === 1 ? 0 : 1;
     },
   },
